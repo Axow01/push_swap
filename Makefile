@@ -16,7 +16,7 @@ LIBFTPATH = includes/libft/
 
 all: $(NAME)
 $(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -g -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
 bin/%.o: src/%.c
 	@mkdir -p bin
 	$(CC) $(CFLAGS) -c -o $@ $<
