@@ -10,15 +10,23 @@ OBJ = $(patsubst src/%.c,bin/%.o,$(SRC))
 
 RM = rm -f
 
-all: $(NAME)
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-bin/%.o: src/%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
-clean:
-	$(RM) $(OBJ)
+LIBFT = libft.a
 
+LIBFTPATH = includes/libft/
+
+all: $(NAME)
+$(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+bin/%.o: src/%.c
+	@mkdir -p bin
+	$(CC) $(CFLAGS) -c -o $@ $<
+$(LIBFTPATH)$(LIBFT):
+	$(MAKE) -C $(LIBFTPATH)
+clean:
+	@$(RM) $(OBJ)
+	@$(MAKE) -C $(LIBFTPATH) fclean
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@$(RM) -rf bin/
 
 re: fclean all
