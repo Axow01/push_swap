@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/20 17:53:29 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/26 14:50:54 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,42 @@ void	ft_add_value_list(t_pile *stack, int value)
 	current = stack;
 	if (!current->nb)
 	{
-        current->nb = value;
+		current->nb = value;
 		return ;
 	}
 	while (current->next)
 		current = current->next;
 	current->next = ft_calloc(1, sizeof(t_pile));
+	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
 }
 
-void    ft_free_stack(t_pile *stack)
+void	ft_free_stack(t_pile *stack)
 {
-    t_pile *current;
-    t_pile *temp;
+	t_pile	*current;
+	t_pile	*temp;
 
-    current = stack;
-    while (current != NULL)
-    {
-        temp = current;
-        current = current->next;
-        free(temp);
-    }
+	current = stack;
+	while (current != NULL)
+	{
+		temp = current;
+		current = current->next;
+		free(temp);
+	}
+}
+
+void	ft_print_list(t_pile *a)
+{
+	t_pile	*current;
+
+	current = a;
+	while (current->next)
+	{
+		ft_printf("%d\n", current->nb);
+		current = current->next;
+	}
+	ft_printf("%d\n", current->nb);
 }
 
 int	main(int argc, char **argv)
@@ -59,14 +73,10 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 		ft_add_value_list(a, ft_atoi(argv[i]));
-    t_pile  *current;
-    current = a;
-	while (current->next)
-	{
-		ft_printf("%d\n", current->nb);
-		current = current->next;
-	}
-	ft_printf("%d\n", current->nb);
-    ft_free_stack(a);
+	ft_print_list(a);
+	ft_printf("\n\n\n");
+	ft_sa(a);
+	ft_print_list(a);
+	ft_free_stack(a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/13 12:54:17 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/26 14:46:26 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@
 typedef struct s_pile
 {
 	int				nb;
+	struct s_pile	*previous;
 	struct s_pile	*next;
 }					t_pile;
 
+/* Swap the first 2 elements at the top of stack a.
+Do nothing if there is only one or no elements. */
+void	ft_sa(t_pile *a);
+
+/* Return the number of elements in the list. */
+int	ft_list_lenght(t_pile *pile);
 #endif
