@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 14:32:16 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/26 14:42:59 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/26 17:48:25 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_list_lenght(t_pile *pile)
 	return (i);
 }
 
-void	ft_sa(t_pile *a)
+void	ft_swap(t_pile *a)
 {
 	int	buffer;
 
@@ -38,4 +38,10 @@ void	ft_sa(t_pile *a)
 	buffer = a->nb;
 	a->nb = a->next->nb;
 	a->next->nb = buffer;
+}
+
+void    ft_ss(t_pile *a, t_pile *b)
+{
+    ft_swap(a);
+    ft_swap(b);
 }
