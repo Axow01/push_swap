@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/26 14:50:54 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:27:27 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,28 @@ void	ft_print_list(t_pile *a)
 
 int	main(int argc, char **argv)
 {
+	int		i;
+	t_data	*data;
+
 	if (argc == 1)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
-	int i;
-	t_pile *a;
-	a = ft_calloc(1, sizeof(t_pile));
+	data = ft_calloc(1, sizeof(t_data));
+	data->a = ft_calloc(1, sizeof(t_pile));
+	data->b = ft_calloc(1, sizeof(t_pile));
 	i = 0;
 	while (++i < argc)
-		ft_add_value_list(a, ft_atoi(argv[i]));
-	ft_print_list(a);
-	ft_printf("\n\n\n");
-	ft_sa(a);
-	ft_print_list(a);
-	ft_free_stack(a);
+		ft_add_value_list(data->a, ft_atoi(argv[i]));
+	ft_add_value_list(data->b, 304);
+	ft_add_value_list(data->b, 420);
+	ft_print_list(data->a);
+	ft_printf("\nB\n");
+	ft_print_list(data->b);
+	ft_pa(data);
+	ft_print_list(data->a);
+	ft_printf("\nB\n");
+	ft_print_list(data->b);
+	ft_free_stack(data->a);
+	ft_free_stack(data->b);
+	data = ft_free(data);
 	return (0);
 }

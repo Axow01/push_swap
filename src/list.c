@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 14:32:16 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/26 17:48:25 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/27 14:22:25 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,48 @@ int	ft_list_lenght(t_pile *pile)
 	return (i);
 }
 
-void	ft_swap(t_pile *a)
+void	ft_sa(t_pile *a)
 {
 	int	buffer;
 
-	if (ft_list_lenght(a) <= 1)
-		return ;
 	buffer = a->nb;
 	a->nb = a->next->nb;
 	a->next->nb = buffer;
+	ft_printf("sa\n");
 }
 
-void    ft_ss(t_pile *a, t_pile *b)
+void	ft_sb(t_pile *b)
 {
-    ft_swap(a);
-    ft_swap(b);
+	int	buffer;
+
+	buffer = b->nb;
+	b->nb = b->next->nb;
+	b->next->nb = buffer;
+	ft_printf("sb\n");
+}
+
+void	ft_ss(t_pile *a, t_pile *b)
+{
+	int	buffer;
+
+	buffer = b->nb;
+	b->nb = b->next->nb;
+	b->next->nb = buffer;
+	buffer = a->nb;
+	a->nb = a->next->nb;
+	a->next->nb = buffer;
+	ft_printf("ss\n");
+}
+
+void	ft_pa(t_data *data)
+{
+	t_pile *node;
+
+	node = ft_calloc(1, sizeof(t_pile));
+	node->next = data->a;
+	data->a->previous = node;
+	node->nb = data->b->nb;
+	data->b = data->b->next;
+	data->b->previous = ft_free(data->b->previous);
+	data->a = node;
 }
