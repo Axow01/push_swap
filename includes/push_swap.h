@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/27 14:38:07 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:41:56 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ void				*ft_free(void *ptr);
 
 /* Put the first elements of a at the top of b. */
 void				ft_pb(t_data *data);
+
+/* Shift up all the elements of stack a by 1.
+The firts element becomes the last one. */
+void				ft_ra(t_data *data);
 
 #endif

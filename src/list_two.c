@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/27 14:41:56 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:40:16 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,8 @@ void	ft_pb(t_data *data)
 	data->a->previous = ft_free(data->a->previous);
 	data->b = node;
 	ft_printf("pb\n");
+}
+
+void	ft_ra(t_data *data)
+{
 }
