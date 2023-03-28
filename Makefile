@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = src/main.c src/list.c src/utils.c
+SRC = src/main.c src/list.c src/utils.c src/list_two.c
 
 OBJ = $(patsubst src/%.c,bin/%.o,$(SRC))
 
