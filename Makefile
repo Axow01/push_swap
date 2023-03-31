@@ -16,7 +16,7 @@ LIBFTPATH = includes/libft/
 
 all: $(NAME)
 $(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	$(CC) $(CFLAGS) -g -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -g -O0 -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
 bin/%.o: src/%.c
 	@mkdir -p bin
 	$(CC) $(CFLAGS) -c -o $@ $<
@@ -28,5 +28,7 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) -rf bin/
+valgrind: all
+	@valgrind -s --leak-check=full --log-file=valgrind_log.rpt ./push_swap 137 372 7384 882
 
 re: fclean all
