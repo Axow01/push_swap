@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/27 14:50:22 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:23:13 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ void	ft_add_value_list(t_pile *stack, int value)
 		current->nb = value;
 		return ;
 	}
-	while (current->next)
+	while (current->next && current->next != stack)
 		current = current->next;
 	current->next = ft_calloc(1, sizeof(t_pile));
 	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
+	stack->previous = current;
+	current->next = stack;
 }
 
 void	ft_free_stack(t_pile *stack)
@@ -42,12 +44,15 @@ void	ft_free_stack(t_pile *stack)
 	t_pile	*temp;
 
 	current = stack;
-	while (current != NULL)
+	while (current->next && current->next != stack)
 	{
+		ft_printf("Current: %d - %p -> FREED\n", current->nb, current);
 		temp = current;
 		current = current->next;
-		free(temp);
+		temp = ft_free(temp);
 	}
+	ft_printf("Current: %d - %p -> FREED\n", current->nb, current);
+	current = ft_free(current);
 }
 
 void	ft_print_list(t_pile *a)
@@ -55,7 +60,7 @@ void	ft_print_list(t_pile *a)
 	t_pile	*current;
 
 	current = a;
-	while (current->next)
+	while (current->next && current->next != a)
 	{
 		ft_printf("%d\n", current->nb);
 		current = current->next;
