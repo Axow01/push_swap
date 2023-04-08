@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/31 15:58:20 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/07 23:42:06 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	data->b = ft_calloc(1, sizeof(t_pile));
 	i = 0;
 	while (++i < argc)
-		ft_add_value_list(data->a, ft_atoi(argv[i]));
+		ft_add_value_list(data->a, ft_atoi(argv[1]));
 	ft_free_stack(data->a);
 	ft_free_stack(data->b);
 	data = ft_free(data);
