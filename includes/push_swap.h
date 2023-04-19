@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/03/28 10:41:56 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:44:43 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_data
 }					t_data;
 
 /* Swap the first 2 elements at the top of stack a.
-Do nothing if there is only one or no elements. Modifier 0 for sb and 1 for sa. */
+Do nothing if there is only one or no elements.
+Modifier 0 for sb and 1 for sa. */
 void				ft_sa(t_pile *a);
 
 /* Swap the first 2 elements at the top of stack b. */
