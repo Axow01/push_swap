@@ -1,0 +1,17 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clang++ build active file",
+            "type": "shell",
+            "command": "clang",
+            "args": [
+                "-g",
+				"${workspaceFolder}/includes/libft/*.c",
+				"${fileDirname}/*.c",
+                "-o",
+                "${fileDirname}/push_swap"
+            ]
+        }
+    ]
+}

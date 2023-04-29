@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/29 15:21:42 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/29 18:06:04 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,19 @@ void	ft_pb(t_data *data)
 void	ft_ra(t_data *data)
 {
 	t_pile	*last;
+	t_pile	*second_last;
 
 	if (data->a && data->a->next)
 	{
 		last = data->a;
-		while (last->next)
+		while (last->next != data->a)
+		{
+			second_last = last;
 			last = last->next;
+		}
+		second_last->next = NULL;
 		last->next = data->a;
-		data->a = data->a->next;
-		last->next->next = NULL;
+		data->a = last;
 	}
 	write(1, "ra\n", 3);
 }
@@ -81,4 +85,24 @@ void	ft_rr(t_data *data)
 		last->next->next = NULL;
 	}
 	write(1, "rr\n", 3);
+}
+
+void	ft_rra(t_data *data)
+{
+	t_pile	*last;
+	t_pile	*second_last;
+
+	if (data->a && data->a->next)
+	{
+		last = data->a;
+		while (last->next)
+		{
+			second_last = last;
+			last = last->next;
+		}
+		second_last->next = NULL;
+		last->next = data->a;
+		data->a = last;
+	}
+	write(1, "rra\n", 4);
 }
