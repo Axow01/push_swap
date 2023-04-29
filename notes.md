@@ -1,9 +1,3 @@
----
-title: "Notes push_swap ! :)"
-layout: default
-permalink: /
----
-
 # PUSH_SWAP
 ## Things to do:
 ---
