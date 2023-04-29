@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/28 21:50:08 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/29 13:26:25 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_ra(t_data *data)
 		data->a = data->a->next;
 		last->next->next = NULL;
 	}
+	write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_data *data)
@@ -54,10 +55,30 @@ void	ft_rb(t_data *data)
 		data->b = data->b->next;
 		last->next->next = NULL;
 	}
+	write(1, "rb\n", 3);
 }
 
 void	ft_rr(t_data *data)
 {
-	ft_ra(data);
-	ft_rb(data);
+	t_pile	*last;
+
+	if (data->a && data->a->next)
+	{
+		last = data->a;
+		while (last->next)
+			last = last->next;
+		last->next = data->a;
+		data->a = data->a->next;
+		last->next->next = NULL;
+	}
+	if (data->b && data->b->next)
+	{
+		last = data->b;
+		while (last->next)
+			last = last->next;
+		last->next = data->b;
+		data->b = data->b->next;
+		last->next->next = NULL;
+	}
+	write(1, "rr\n", 3);
 }
