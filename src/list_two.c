@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/29 22:28:53 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:42:10 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,24 @@ void	ft_pb(t_data *data)
 	data->b = node;
 	ft_printf("pb\n");
 }
-/*
+
 void	ft_ra(t_data *data)
 {
-}*/
+	t_pile	**head;
+	t_pile	*first;
+	t_pile	*last;
+
+	head = &data->a;
+	if (*head == NULL || (*head)->next == NULL)
+		return ;
+
+	last = *head;
+	while (last->next != NULL)
+		last = last->next;
+	first = *head;
+	*head = first->next;
+	(*head)->previous = NULL;
+	first->previous = last;
+	first->next = NULL;
+	last->next = first;
+}

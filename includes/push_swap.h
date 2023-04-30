@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/29 17:28:12 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:41:56 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,5 @@ void				ft_pb(t_data *data);
 /* Shift up all the elements of stack a by 1.
 The firts element becomes the last one. */
 void				ft_ra(t_data *data);
-
-/* Shift up all the elements of stack b by 1.
-The firts element becomes the last one. */
-void				ft_rb(t_data *data);
-
-/* Shift up all the elements of stack a and b by 1.
-The firsts elements becomes the last ones.*/
-void				ft_rr(t_data *data);
-
-/* Shift down all the elements of stack a.
-The fisrt element become the first one. */
-void				ft_rra(t_data *data);
 
 #endif
