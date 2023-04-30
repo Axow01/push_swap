@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/29 17:59:33 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/29 22:27:24 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ void	ft_add_value_list(t_pile *stack, int value)
 		current->nb = value;
 		return ;
 	}
-	while (current->next && current->next != stack)
+	while (current->next)
 		current = current->next;
 	current->next = ft_calloc(1, sizeof(t_pile));
 	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
-	stack->previous = current;
-	current->next = stack;
 }
 
 void	ft_free_stack(t_pile *stack)
