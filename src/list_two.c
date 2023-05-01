@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/30 15:42:10 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/04/30 18:22:08 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_ra(t_data *data)
 	head = &data->a;
 	if (*head == NULL || (*head)->next == NULL)
 		return ;
-
 	last = *head;
 	while (last->next != NULL)
 		last = last->next;
