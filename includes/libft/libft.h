@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -29,7 +30,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}			t_list;
+}					t_list;
 
 size_t	ft_strlen(const char *str);
 
@@ -122,5 +123,8 @@ char	*ft_ulltoa(unsigned long long n, int base);
 int		ft_put_hex(unsigned int nb, char maj);
 int		ft_put_p(uintptr_t nbr);
 int		ft_printf(char *string, ...);
+
+// This function convert roman numeral to integer.
+int		ft_roman_to_int(char *s);
 
 #endif
