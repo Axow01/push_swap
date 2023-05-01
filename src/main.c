@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/30 15:36:48 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/01 00:59:55 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,8 @@ int	main(int argc, char **argv)
 	while (++i < argc)
 		ft_add_value_list(data->a, ft_atoi(argv[i]));
 	ft_print_list(data->a);
-	ft_ra(&data->a);
+	ft_ra(data, 1);
+	//ft_rra(data);
 	write(1, "\n\n", 2);
 	ft_print_list(data->a);
 	ft_free_stack(data->a);
