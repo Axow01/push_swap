@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/01 00:59:55 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:55:35 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	ft_add_value_list(t_pile *stack, int value)
 	while (current->next)
 		current = current->next;
 	current->next = ft_calloc(1, sizeof(t_pile));
+	if (!current->next)
+		ft_exit("Calloc failled.\n", 1);
 	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
@@ -74,14 +76,18 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
 	data = ft_calloc(1, sizeof(t_data));
-	data->a = ft_calloc(1, sizeof(t_pile));
+	if (!data)
+		ft_exit("Calloc failled!\n", 1);
+	data->a = NULL;
 	data->b = ft_calloc(1, sizeof(t_pile));
+	if (!data->b || !data->a)
+		ft_exit("Calloc failled for data->a or data->b or data.\n", 1);
 	i = 0;
 	while (++i < argc)
 		ft_add_value_list(data->a, ft_atoi(argv[i]));
 	ft_print_list(data->a);
 	ft_ra(data, 1);
-	//ft_rra(data);
+	ft_rra(data);
 	write(1, "\n\n", 2);
 	ft_print_list(data->a);
 	ft_free_stack(data->a);

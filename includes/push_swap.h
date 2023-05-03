@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/01 01:18:19 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:38:12 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef struct s_data
 	t_pile			*a;
 	t_pile			*b;
 }					t_data;
+
+/* Exit the program. Without any free to use only
+if you don't have values to free. */
+void				ft_exit(char *message, int code);
+
+/* This function exit the program but has the ability 
+to free two pointers before quitting. */
+void				ft_exit_pointer(char *message, void *p, void *p1);
 
 /* Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements.

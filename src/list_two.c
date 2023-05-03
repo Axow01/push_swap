@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/01 01:05:00 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:49:10 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_pb(t_data *data)
 	t_pile	*node;
 
 	node = ft_calloc(1, sizeof(t_pile));
+	if (!node)
+		ft_exit("Calloc failled!\n", 1);
 	node->next = data->b;
 	data->b->previous = node;
 	node->nb = data->a->nb;

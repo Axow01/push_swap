@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 SRC = src/main.c src/list.c src/utils.c src/list_two.c \
 	src/list_three.c
@@ -17,7 +17,7 @@ LIBFTPATH = includes/libft/
 
 all: $(NAME)
 $(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	$(CC) $(CFLAGS) -g -O0 -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
 bin/%.o: src/%.c
 	@mkdir -p bin
 	$(CC) $(CFLAGS) -c -o $@ $<

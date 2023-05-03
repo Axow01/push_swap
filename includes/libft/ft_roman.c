@@ -6,11 +6,11 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:24:21 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/04/29 16:40:53 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 16:43:17 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_toupper_str(char *s)
 {
@@ -83,9 +83,6 @@ int	calculate_letters(char *s)
 
 int	ft_roman_to_int(char *s)
 {
-	int	total;
-
-	total = 0;
 	if (!check_letters(s))
 		return (0);
 	return (calculate_letters(ft_toupper_str(s)));
