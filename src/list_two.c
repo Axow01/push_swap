@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 14:35:23 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/03 16:49:10 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:35:44 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	ft_rra(t_data *data)
 	while (current->next)
 		current = current->next;
 	current->next = data->a;
+	current->previous->next = NULL;
 	current->previous = NULL;
 	data->a->previous = current;
 	data->a = current;

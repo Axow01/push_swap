@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/03 18:56:59 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:32:27 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,18 @@ void	ft_free_stack(t_pile *stack)
 	if (!stack)
 		return ;
 	current = stack;
-	while (current->next)
+	while (current->next && current)
 	{
-		ft_printf("Current: %d - %p -> FREED\n", current->nb, current);
+		ft_printf("Current: %d - %p -> ", current->nb, current);
 		temp = current;
 		current = current->next;
 		temp = ft_free(temp);
+		write(1, "FREED\n", 7);
 	}
-	ft_printf("Current: %d - %p -> FREED\n", current->nb, current);
+	write(1, "got here\n", 10);
+	ft_printf("Current: %d - %p -> ", current->nb, current);
 	current = ft_free(current);
+	write(1, "FREED\n", 7);
 }
 
 void	ft_print_list(t_pile *a)
@@ -90,11 +93,10 @@ int	main(int argc, char **argv)
 		if (!ft_add_value_list(data->a, atoi(argv[i])))
 			ft_exit_pointer("Calloc error!\n", NULL, data);
 	ft_print_list(data->a);
-	ft_pb(data);
+	ft_rra(data);
 	write(1, "\n\n", 2);
 	ft_print_list(data->a);
 	write(1, "\n", 1);
-	ft_print_list(data->b);
 	ft_free_stack(data->a);
 	ft_free_stack(data->b);
 	data = ft_free(data);

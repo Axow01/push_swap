@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 01:05:15 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/01 15:17:53 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:37:59 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_rrb(t_data *data)
 	while (current->next)
 		current = current->next;
 	current->next = data->b;
+	current->previous->next = NULL;
 	current->previous = NULL;
 	data->b->previous = current;
 	data->b = current;
