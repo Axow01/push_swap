@@ -42,3 +42,13 @@ Stack B: 2 34 53 56
 Stack A: 2 34 53 56 68
 Stack B: 
 ```
+
+## Leaks and Protections
+
+Make sure to protect each malloc(calloc), and make sure to free all the values in every case (even in some errors cases).
+
+- Check leaks with:
+
+```
+leaks --atExit -- ./push_swap $ARGS
+```

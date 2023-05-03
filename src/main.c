@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/03 17:55:35 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:56:59 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_exit(char *message, int code)
 	exit(code);
 }
 
-void	ft_add_value_list(t_pile *stack, int value)
+int	ft_add_value_list(t_pile *stack, int value)
 {
 	t_pile	*current;
 
@@ -26,16 +26,17 @@ void	ft_add_value_list(t_pile *stack, int value)
 	if (!current->nb)
 	{
 		current->nb = value;
-		return ;
+		return (1);
 	}
 	while (current->next)
 		current = current->next;
 	current->next = ft_calloc(1, sizeof(t_pile));
 	if (!current->next)
-		ft_exit("Calloc failled.\n", 1);
+		return (0);
 	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
+	return (1);
 }
 
 void	ft_free_stack(t_pile *stack)
@@ -43,8 +44,10 @@ void	ft_free_stack(t_pile *stack)
 	t_pile	*current;
 	t_pile	*temp;
 
+	if (!stack)
+		return ;
 	current = stack;
-	while (current->next && current->next != stack)
+	while (current->next)
 	{
 		ft_printf("Current: %d - %p -> FREED\n", current->nb, current);
 		temp = current;
@@ -78,18 +81,20 @@ int	main(int argc, char **argv)
 	data = ft_calloc(1, sizeof(t_data));
 	if (!data)
 		ft_exit("Calloc failled!\n", 1);
-	data->a = NULL;
+	data->a = ft_calloc(1, sizeof(t_pile));
 	data->b = ft_calloc(1, sizeof(t_pile));
 	if (!data->b || !data->a)
-		ft_exit("Calloc failled for data->a or data->b or data.\n", 1);
+		ft_exit_pointer("Calloc error!\n", NULL, data);
 	i = 0;
 	while (++i < argc)
-		ft_add_value_list(data->a, ft_atoi(argv[i]));
+		if (!ft_add_value_list(data->a, atoi(argv[i])))
+			ft_exit_pointer("Calloc error!\n", NULL, data);
 	ft_print_list(data->a);
-	ft_ra(data, 1);
-	ft_rra(data);
+	ft_pb(data);
 	write(1, "\n\n", 2);
 	ft_print_list(data->a);
+	write(1, "\n", 1);
+	ft_print_list(data->b);
 	ft_free_stack(data->a);
 	ft_free_stack(data->b);
 	data = ft_free(data);

@@ -5,7 +5,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 
 SRC = src/main.c src/list.c src/utils.c src/list_two.c \
-	src/list_three.c
+	src/list_three.c src/error.c
 
 OBJ = $(patsubst src/%.c,bin/%.o,$(SRC))
 
@@ -17,7 +17,7 @@ LIBFTPATH = includes/libft/
 
 all: $(NAME)
 $(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -fsanitize=address -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
 bin/%.o: src/%.c
 	@mkdir -p bin
 	$(CC) $(CFLAGS) -c -o $@ $<

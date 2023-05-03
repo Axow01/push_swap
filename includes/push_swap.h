@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/03 17:38:12 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:34:16 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ void				ft_exit(char *message, int code);
 
 /* This function exit the program but has the ability 
 to free two pointers before quitting. */
-void				ft_exit_pointer(char *message, void *p, void *p1);
+void				ft_exit_pointer(char *message, void *p, t_data *data);
+
+/* This function frees all the elements of the stack. */
+void				ft_free_stack(t_pile *stack);
 
 /* Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements.
