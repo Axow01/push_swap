@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/03 19:32:27 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/04 01:44:08 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	ft_free_stack(t_pile *stack)
 		temp = ft_free(temp);
 		write(1, "FREED\n", 7);
 	}
-	write(1, "got here\n", 10);
 	ft_printf("Current: %d - %p -> ", current->nb, current);
 	current = ft_free(current);
 	write(1, "FREED\n", 7);
@@ -76,7 +75,6 @@ void	ft_print_list(t_pile *a)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_data	*data;
 
 	if (argc == 1)
@@ -86,18 +84,11 @@ int	main(int argc, char **argv)
 		ft_exit("Calloc failled!\n", 1);
 	data->a = ft_calloc(1, sizeof(t_pile));
 	data->b = ft_calloc(1, sizeof(t_pile));
-	if (!data->b || !data->a)
-		ft_exit_pointer("Calloc error!\n", NULL, data);
-	i = 0;
-	while (++i < argc)
-		if (!ft_add_value_list(data->a, atoi(argv[i])))
-			ft_exit_pointer("Calloc error!\n", NULL, data);
-	ft_print_list(data->a);
-	ft_rra(data);
-	write(1, "\n\n", 2);
-	ft_print_list(data->a);
-	write(1, "\n", 1);
+	if (!data->b || !data->a || ft_parsing(argv, argc, data) == 0)
+		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
+	ft_check_twins(data);
 	ft_free_stack(data->a);
+	write(1, "\n", 1);
 	ft_free_stack(data->b);
 	data = ft_free(data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/03 18:34:16 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/04 01:48:29 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,15 @@ void				ft_rrb(t_data *data);
 
 /* ft_rra and ft_rrb at the same time. */
 void				ft_rrr(t_data *data);
+
+/* Eventually put the function usage here. */
+int					ft_parsing(char **args, int argc, t_data *data);
+
+/* This function add value to an stack. */
+int					ft_add_value_list(t_pile *stack, int value);
+
+/* Verifies that there is no duplicate numbers in the stack.
+If there is then free and exit. */
+void				ft_check_twins(t_data *data);
 
 #endif

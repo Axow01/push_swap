@@ -52,3 +52,7 @@ Make sure to protect each malloc(calloc), and make sure to free all the values i
 ```
 leaks --atExit -- ./push_swap $ARGS
 ```
+
+## Random Notes
+
+- [ ] Make a Makefile logo when compiling the project.
