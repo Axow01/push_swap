@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 00:09:27 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/04 02:05:01 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:24:03 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	ft_check_args(char **args, int argc, int o)
 		i = -1;
 	while (++i < argc)
 	{
-		k = 0;
-		while (args[i][k])
-			if (!ft_isdigit((int)args[i][k++]))
+		k = -1;
+		while (args[i][++k])
+			if (!ft_isdigit((int)args[i][k]) && (args[i][k] == '-'
+					&& !ft_isdigit(args[i][k + 1])))
 				return (0);
 	}
 	return (1);
@@ -87,4 +88,3 @@ int	ft_parsing(char **args, int argc, t_data *data)
 		ft_transform(args, argc, data, 1);
 	return (1);
 }
-
