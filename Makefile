@@ -15,21 +15,32 @@ LIBFT = libft.a
 
 LIBFTPATH = includes/libft/
 
-all: $(NAME)
+all: $(NAME) logo
 $(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	$(CC) $(CFLAGS) -fsanitize=address -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+	@$(CC) $(CFLAGS) -fsanitize=address -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
 bin/%.o: src/%.c
 	@mkdir -p bin
-	$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $<
 $(LIBFTPATH)$(LIBFT):
-	$(MAKE) -C $(LIBFTPATH)
+	@$(MAKE) -C $(LIBFTPATH)
 clean:
 	@$(RM) $(OBJ)
 	@$(MAKE) -C $(LIBFTPATH) fclean
 fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) -rf bin/
-valgrind: all
-	@valgrind -s --leak-check=full --log-file=valgrind_log.rpt ./push_swap 137 372 7384 882
 
 re: fclean all
+
+logo:
+	@echo "\033[32;1m"
+	@echo "███▄ ▄███▓ ███▄ ▄███▓ ▄▄▄       ██▀███   ▄████▄   ▒█████  ▄▄▄█████▓▄▄▄█████▓"
+	@echo "▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▒████▄    ▓██ ▒ ██▒▒██▀ ▀█  ▒██▒  ██▒▓  ██▒ ▓▒▓  ██▒ ▓▒"
+	@echo "▓██    ▓██░▓██    ▓██░▒██  ▀█▄  ▓██ ░▄█ ▒▒▓█    ▄ ▒██░  ██▒▒ ▓██░ ▒░▒ ▓██░ ▒░"
+	@echo "▒██    ▒██ ▒██    ▒██ ░██▄▄▄▄██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒▒██   ██░░ ▓██▓ ░ ░ ▓██▓ ░ "
+	@echo "▒██▒   ░██▒▒██▒   ░██▒ ▓█   ▓██▒░██▓ ▒██▒▒ ▓███▀ ░░ ████▓▒░  ▒██▒ ░   ▒██▒ ░ "
+	@echo "░ ▒░   ░  ░░ ▒░   ░  ░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ░▒ ▒  ░░ ▒░▒░▒░   ▒ ░░     ▒ ░░   "
+	@echo "░  ░      ░░  ░      ░  ▒   ▒▒ ░  ░▒ ░ ▒░  ░  ▒     ░ ▒ ▒░     ░        ░    "
+	@echo "░      ░   ░      ░     ░   ▒     ░░   ░ ░        ░ ░ ░ ▒    ░        ░      "
+	@echo "       ░          ░         ░  ░   ░     ░ ░          ░ ░                    "
+	@echo "                                         ░                                   \033[0m"
