@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/04 01:44:08 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/06 15:12:15 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,17 @@ void	ft_print_list(t_pile *a)
 
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_data	data;
 
 	if (argc == 1)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
-	data = ft_calloc(1, sizeof(t_data));
-	if (!data)
-		ft_exit("Calloc failled!\n", 1);
-	data->a = ft_calloc(1, sizeof(t_pile));
-	data->b = ft_calloc(1, sizeof(t_pile));
-	if (!data->b || !data->a || ft_parsing(argv, argc, data) == 0)
-		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
-	ft_check_twins(data);
-	ft_free_stack(data->a);
+	data.a = ft_calloc(1, sizeof(t_pile));
+	data.b = ft_calloc(1, sizeof(t_pile));
+	if (!data.b || !data.a || ft_parsing(argv, argc, &data) == 0)
+		ft_exit_pointer("Calloc error or parsing!\n", NULL, &data);
+	ft_check_twins(&data);
+	ft_free_stack(data.a);
 	write(1, "\n", 1);
-	ft_free_stack(data->b);
-	data = ft_free(data);
+	ft_free_stack(data.b);
 	return (0);
 }
