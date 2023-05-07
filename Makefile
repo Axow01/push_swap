@@ -5,7 +5,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g
 
 SRC = src/main.c src/list.c src/utils.c src/list_two.c \
-	src/list_three.c src/error.c src/parsing.c
+	src/list_three.c src/error.c src/parsing.c src/sort.c
 
 OBJ = $(patsubst src/%.c,bin/%.o,$(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/06 19:14:29 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/07 01:46:18 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ void	ft_free_stack(t_pile *stack)
 	current = stack;
 	while (current->next && current)
 	{
-		ft_printf("Current: %d - %p -> ", current->nb, current);
+		//ft_printf("Current: %d - %p -> ", current->nb, current);
 		temp = current;
 		current = current->next;
 		temp = ft_free(temp);
-		write(1, "FREED\n", 7);
+		//write(1, "FREED\n", 7);
 	}
-	ft_printf("Current: %d - %p -> ", current->nb, current);
+	//ft_printf("Current: %d - %p -> ", current->nb, current);
 	current = ft_free(current);
-	write(1, "FREED\n", 7);
+	//write(1, "FREED\n", 7);
 }
 
 void	ft_print_list(t_pile *a)
@@ -84,8 +84,8 @@ int	main(int argc, char **argv)
 	if (!data.b || !data.a || ft_parsing(argv, argc, &data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, &data);
 	ft_check_twins(&data);
+	ft_sort(&data);
 	ft_free_stack(data.a);
-	write(1, "\n", 1);
 	ft_free_stack(data.b);
 	return (0);
 }

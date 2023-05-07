@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:33:13 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/04 01:48:29 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/07 01:33:54 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,10 @@ int					ft_add_value_list(t_pile *stack, int value);
 /* Verifies that there is no duplicate numbers in the stack.
 If there is then free and exit. */
 void				ft_check_twins(t_data *data);
+
+/* This sort the stacks. */
+void				ft_sort(t_data *data);
+
+void	ft_print_list(t_pile *a);
 
 #endif
