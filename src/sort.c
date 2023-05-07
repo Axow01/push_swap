@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:36:44 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/07 01:45:26 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/07 02:38:34 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,18 @@ int	ft_srch_small(t_data *data)
 
 	current = data->a;
 	small = current->nb;
-	i = 0;
 	while (current->next)
 	{
-		if (current->nb < small || (ft_list_lenght(data->a) == 2 &&
-				small < current->next->nb))
+		if (current->nb < small)
 		{
 			small = current->nb;
-			return (i);
 		}
+		current = current->next;
+	}
+	current = data->a;
+	i = 0;
+	while (current->next && current->nb != small)
+	{
 		current = current->next;
 		i++;
 	}
@@ -68,6 +71,7 @@ void	ft_sort(t_data *data)
 	while (i-- > 1)
 		ft_push_given(data, ft_srch_small(data));
 	i = ft_list_lenght(data->b);
+	ft_print_list(data->b);
 	while (i-- > 1)
 		ft_pa(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/07 01:46:18 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/07 02:38:22 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, &data);
 	ft_check_twins(&data);
 	ft_sort(&data);
+	write(1, "\n\n", 2);
 	ft_free_stack(data.a);
 	ft_free_stack(data.b);
 	return (0);
