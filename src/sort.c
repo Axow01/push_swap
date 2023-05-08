@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 00:36:44 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/07 16:22:24 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:52:08 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,3 @@ void	ft_sort(t_data *data)
 	while (i-- > 1)
 		ft_pa(data);
 }
-	
