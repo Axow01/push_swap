@@ -30,6 +30,8 @@ fclean: clean
 	@$(RM) $(NAME)
 	@$(RM) -rf bin/
 
+bonus: all
+
 re: fclean all
 
 logo:
