@@ -2,7 +2,7 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 SRC = src/main.c src/list.c src/utils.c src/list_two.c \
 	src/list_three.c src/error.c src/parsing.c src/sort.c
@@ -17,10 +17,10 @@ LIBFTPATH = includes/libft/
 
 all: $(NAME) logo
 $(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	@$(CC) $(CFLAGS) -fsanitize=address -o $(NAME) $(LIBFTPATH)$(LIBFT) $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFTPATH)$(LIBFT) -o $(NAME)
 bin/%.o: src/%.c
 	@mkdir -p bin
-	@$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) -c -o $@ $<
 $(LIBFTPATH)$(LIBFT):
 	@$(MAKE) -C $(LIBFTPATH)
 clean:
