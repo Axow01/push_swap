@@ -12,6 +12,19 @@
 
 #include "../includes/push_swap.h"
 
+t_data	*get_data(void)
+{
+	static t_data	*data;
+
+	if (!data)
+	{
+		data = ft_calloc(1, sizeof(t_data));
+		if (!data)
+			ft_exit("Failed to malloc the data structure.\n", 1);
+	}
+	return (data);
+}
+
 void	*ft_free(void *ptr)
 {
 	if (ptr)

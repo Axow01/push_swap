@@ -35,7 +35,7 @@ typedef struct s_data
 if you don't have values to free. */
 void				ft_exit(char *message, int code);
 
-/* This function exit the program but has the ability 
+/* This function exit the program but has the ability
 to free two pointers before quitting. */
 void				ft_exit_pointer(char *message, void *p, t_data *data);
 
@@ -98,8 +98,12 @@ If there is then free and exit. */
 void				ft_check_twins(t_data *data);
 
 /* This sort the stacks. */
-void				ft_sort(t_data *data);
+void				ft_sort(void);
 
-void	ft_print_list(t_pile *a);
+/* Prints a stack you .... */
+void				ft_print_list(t_pile *a);
+
+/* This give the variable data. */
+t_data				*get_data(void);
 
 #endif

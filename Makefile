@@ -1,41 +1,49 @@
+#--- DEFAULT VALUES ---#
+
 NAME = push_swap
+
+SRC = src/main.c src/error.c src/list.c src/list_two.c src/list_three.c \
+	src/parsing.c src/sort.c src/utils.c
+
+OBJS = $(patsubst src/%.c, bin/%.o, $(SRC))
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
-
-SRC = src/main.c src/list.c src/utils.c src/list_two.c \
-	src/list_three.c src/error.c src/parsing.c src/sort.c
-
-OBJ = $(patsubst src/%.c,bin/%.o,$(SRC))
-
-RM = rm -f
-
-LIBFT = libft.a
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFTPATH = includes/libft/
 
+LIBFT = libft.a
+
+#---   RULES   ---#
+
 all: $(NAME) logo
-$(NAME): $(OBJ) $(LIBFTPATH)$(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFTPATH)$(LIBFT) -o $(NAME)
+
+$(NAME): $(OBJS) $(LIBFTPATH)$(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFTPATH) -lft -o $(NAME)
+
 bin/%.o: src/%.c
-	@mkdir -p bin
-	@$(CC) -c -o $@ $<
+	@mkdir -p bin/
+	@$(CC) $(CFLAGS) -c -o $@ $<
+
 $(LIBFTPATH)$(LIBFT):
 	@$(MAKE) -C $(LIBFTPATH)
+	@$(MAKE) -C $(LIBFTPATH) bonus
+
 clean:
-	@$(RM) $(OBJ)
-	@$(MAKE) -C $(LIBFTPATH) fclean
+	@rm -rf bin/
+	@$(MAKE) -C $(LIBFTPATH) clean
+
 fclean: clean
-	@$(RM) $(NAME)
-	@$(RM) -rf bin/
+	@rm $(NAME)
+	@$(MAKE) -C $(LIBFTPATH) fclean
 
 bonus: all
 
 re: fclean all
 
 logo:
-	@echo "\033[32;1m"
+	@echo "\033[32;1m		--- BUILD COMPLETE ---"
 	@echo "███▄ ▄███▓ ███▄ ▄███▓ ▄▄▄       ██▀███   ▄████▄   ▒█████  ▄▄▄█████▓▄▄▄█████▓"
 	@echo "▓██▒▀█▀ ██▒▓██▒▀█▀ ██▒▒████▄    ▓██ ▒ ██▒▒██▀ ▀█  ▒██▒  ██▒▓  ██▒ ▓▒▓  ██▒ ▓▒"
 	@echo "▓██    ▓██░▓██    ▓██░▒██  ▀█▄  ▓██ ░▄█ ▒▒▓█    ▄ ▒██░  ██▒▒ ▓██░ ▒░▒ ▓██░ ▒░"

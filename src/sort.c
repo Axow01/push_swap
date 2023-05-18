@@ -12,65 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_push_given(t_data *data, int id)
+void	ft_sort(void)
 {
-	t_pile	*current;
-	int		list_len;
+	t_data	*data;
 
-	current = data->a;
-	if (id == 0)
-	{
-		ft_pb(data);
-		return ;
-	}
-	list_len = ft_list_lenght(current);
-	if (list_len - id > id)
-	{
-		while (id-- > 0)
-			ft_ra(data, 1);
-	}
-	else
-	{
-		while (id++ < list_len)
-			ft_rra(data);
-	}
-	ft_pb(data);
-}
-
-int	ft_srch_small(t_data *data)
-{
-	t_pile	*current;
-	int		small;
-	int		i;
-
-	current = data->a;
-	small = current->nb;
-	while (current->next)
-	{
-		if (current->nb < small)
-		{
-			small = current->nb;
-		}
-		current = current->next;
-	}
-	current = data->a;
-	i = 0;
-	while (current->next && current->nb != small)
-	{
-		current = current->next;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_sort(t_data *data)
-{
-	int	i;
-
-	i = ft_list_lenght(data->a);
-	while (i-- > 1)
-		ft_push_given(data, ft_srch_small(data));
-	i = ft_list_lenght(data->b);
-	while (i-- > 1)
-		ft_pa(data);
+	data = get_data();
 }
