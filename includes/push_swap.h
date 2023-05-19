@@ -23,12 +23,15 @@ typedef struct s_pile
 	int				nb;
 	struct s_pile	*previous;
 	struct s_pile	*next;
+	int				chunk_size;
+	int				chunk_nb;
 }					t_pile;
 
 typedef struct s_data
 {
 	t_pile			*a;
 	t_pile			*b;
+	t_pile			*chunk;
 }					t_data;
 
 /* Exit the program. Without any free to use only

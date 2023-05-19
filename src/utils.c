@@ -25,6 +25,25 @@ t_data	*get_data(void)
 	return (data);
 }
 
+void	ft_remove_element(t_pile *pile, int index)
+{
+	t_pile	*current;
+	t_pile	*buffer;
+
+	if (!pile)
+		return ;
+	current = pile;
+	while (index-- > 0 && current)
+	{
+		current = current->next;
+	}
+	buffer = current->previous;
+	buffer->next = current->next;
+	current->next->previous = buffer;
+	current = ft_free(current);
+	current = buffer;
+}
+
 void	*ft_free(void *ptr)
 {
 	if (ptr)
