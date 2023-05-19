@@ -81,7 +81,7 @@ int	main(int argc, char **argv)
 	if (!data->b || !data->a || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);
-	ft_sort(data);
+	ft_sort();
 	ft_free_stack(data->a);
 	ft_free_stack(data->b);
 	return (0);
