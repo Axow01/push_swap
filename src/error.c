@@ -17,7 +17,8 @@ void	ft_exit_pointer(char *message, void *p, t_data *data)
 	p = ft_free(p);
 	ft_free_stack(data->a);
 	ft_free_stack(data->b);
-	ft_free_stack(data->chunk);
+	if (data->chunk)
+		free(data->chunk);
 	ft_printf("%s", message);
 	exit(1);
 }

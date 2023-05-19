@@ -27,59 +27,85 @@ void	ft_define_chunk_size(t_pile *pile)
 	pile->chunk_nb = i - 1;
 }
 
-t_pile	*ft_get_chunk(t_pile *pile, int chunk)
+int	*ft_create_chunk(t_pile *pile, int chunk)
 {
-	t_pile	*current;
-	t_pile	*chunkp;
 	int		i;
+	t_pile	*current;
+	int		*chunki;
 
 	if (!pile)
 		return (NULL);
-	i = -1;
+	chunki = malloc(pile->chunk_size * sizeof(int));
 	current = pile;
-	while (++i < chunk * pile->chunk_size)
+	i = -1;
+	while (++i < chunk * pile->chunk_size && current)
 		current = current->next;
 	i = -1;
-	chunkp = ft_calloc(1, sizeof(t_pile));
-	if (!chunkp)
-		ft_exit_pointer("Failled to calloc <chunkp> ln:43\n", NULL, get_data());
-	while (++i < pile->chunk_size)
+	while (++i < pile->chunk_size && current)
 	{
-		ft_add_value_list(chunkp, current->nb);
+		chunki[i] = current->nb;
 		current = current->next;
 	}
-	get_data()->chunk = chunkp;
+	get_data()->chunk = chunki;
 	return (get_data()->chunk);
 }
 
-int	ft_find_smallest(t_pile *chunk)
+int	ft_get_small(int *chunk)
+{
+	int	i;
+	int	small;
+	int	*new;
+
+	i = -1;
+	small = chunk[0];
+	while (++i < get_data()->a->chunk_size)
+	{
+		if (chunk[i] < small)
+			small = chunk[i];
+	}
+	i = -1;
+	new = malloc((get_data()->a->chunk_size - 1) * sizeof(int));
+	while (++i < get_data()->a->chunk_size)
+		if (chunk[i] != small)
+			new[i] = chunk[i];
+	printf("----%d----\n", (int)sizeof(new) / (int)sizeof(new[0]));
+	get_data()->chunk = new;
+	return (small);
+}
+
+void	ft_push_small(t_pile *pile, int nb)
 {
 	t_pile	*current;
-	int		smallest;
-	int		index;
+	int		i;
+	bool	rotate;
 
-	if (!chunk)
-		ft_exit_pointer("Chunk inexistant !\n", NULL, get_data());
-	ft_print_list(chunk);
-	current = chunk;
-	smallest = 0;
-	index = 0;
-	while (current)
+	current = pile;
+	i = 0;
+	rotate = false;
+	printf("Nb: %d\n", nb);
+	while (current && current->nb != nb)
 	{
-		if (smallest > current->nb)
-			smallest = current->nb;
+		i++;
+		printf("Current: %d\n", current->nb);
 		current = current->next;
-		index++;
 	}
-	current = chunk;
-	while (current && current->nb != smallest && --index >= 0)
-		current = current->previous;
-	return (index - 1);
+	if (i < ft_list_lenght(pile) / 2)
+		rotate = true;
+	printf("I: %d\n", i);
+	while (i-- > 0)
+		ft_ra(get_data(), 1);
+	ft_pb(get_data());
 }
 
 void	ft_sort(void)
 {
 	ft_define_chunk_size(get_data()->a);
-	printf("Smallest index: %d\n", ft_find_smallest(ft_get_chunk(get_data()->a, 0)));
-	ft_exit_pointer("jsp\n", NULL, get_data());
+	// Search smallest and push in the first chunk.
+	get_data()->chunk = ft_create_chunk(get_data()->a, 0);
+	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk));
+	//ft_print_list(get_data()->a);
+	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk));
+	//ft_print_list(get_data()->a);
+	//write(1, "\n\n", 2);
+	//ft_print_list(get_data()->b);
 }

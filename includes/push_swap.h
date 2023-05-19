@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -31,7 +32,7 @@ typedef struct s_data
 {
 	t_pile			*a;
 	t_pile			*b;
-	t_pile			*chunk;
+	int				*chunk;
 }					t_data;
 
 /* Exit the program. Without any free to use only
