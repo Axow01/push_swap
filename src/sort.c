@@ -100,7 +100,6 @@ void	ft_push_small(t_pile *pile, int nb)
 void	ft_sort(void)
 {
 	ft_define_chunk_size(get_data()->a);
-	// Search smallest and push in the first chunk.
 	get_data()->chunk = ft_create_chunk(get_data()->a, 0);
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk));
 	//ft_print_list(get_data()->a);
