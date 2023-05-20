@@ -18,14 +18,21 @@ void	ft_exit(char *message, int code)
 	exit(code);
 }
 
-int	ft_add_value_list(t_pile *stack, int value)
+int	ft_add_value_list(t_pile *stack, int value, int who)
 {
 	t_pile	*current;
 
 	current = stack;
-	if (!current->nb)
+	if (!stack)
 	{
-		current->nb = value;
+		stack = ft_calloc(1, sizeof(t_pile));
+		if (!stack)
+			ft_exit_pointer("Failled to add\n", NULL, get_data());
+		stack->nb = value;
+		if (who)
+			get_data()->a = stack;
+		else
+			get_data()->b = stack;
 		return (1);
 	}
 	while (current->next)
@@ -76,9 +83,9 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
 	data = get_data();
-	data->a = ft_calloc(1, sizeof(t_pile));
+	// data->a = ft_calloc(1, sizeof(t_pile));
 	data->b = ft_calloc(1, sizeof(t_pile));
-	if (!data->b || !data->a || ft_parsing(argv, argc, data) == 0)
+	if (!data->b || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);
 	ft_sort();

@@ -102,6 +102,8 @@ void	ft_sort(void)
 {
 	ft_define_chunk_size(get_data()->a);
 	get_data()->chunk->c = ft_create_chunk(get_data()->a, 0);
+	if (!get_data()->chunk->c)
+		ft_exit_pointer("Failled to chunk bitch\n", NULL, get_data());
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
 	ft_print_list(get_data()->a);

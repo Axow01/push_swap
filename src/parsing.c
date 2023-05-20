@@ -41,7 +41,7 @@ void	ft_transform(char **numbers, int c, t_data *data, int o)
 	if (o == 0)
 		i = -1;
 	while (++i < c)
-		if (!ft_add_value_list(data->a, atoi(numbers[i])))
+		if (!ft_add_value_list(data->a, atoi(numbers[i]), 1))
 			ft_exit_pointer("Calloc error!\n", NULL, data);
 }
 

@@ -101,7 +101,7 @@ void				ft_rrr(t_data *data);
 int					ft_parsing(char **args, int argc, t_data *data);
 
 /* This function add value to an stack. */
-int					ft_add_value_list(t_pile *stack, int value);
+int					ft_add_value_list(t_pile *stack, int value, int who);
 
 /* Verifies that there is no duplicate numbers in the stack.
 If there is then free and exit. */
