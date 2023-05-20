@@ -54,21 +54,21 @@ int	*ft_create_chunk(t_pile *pile, int chunk)
 int	ft_get_small(int *chunk)
 {
 	int	i;
+	int	b;
 	int	small;
 	int	*new;
 
 	i = -1;
 	small = chunk[0];
 	while (++i < get_data()->chunk->i)
-	{
 		if (chunk[i] < small)
 			small = chunk[i];
-	}
 	i = -1;
+	b = 0;
 	new = ft_calloc(get_data()->a->chunk_size - 1, sizeof(int));
-	while (++i < get_data()->chunk->i)
+	while (++i < get_data()->a->chunk_size)
 		if (chunk[i] != small)
-			new[i] = chunk[i];
+			new[b++] = chunk[i];
 	get_data()->chunk->c = new;
 	get_data()->chunk->i -= 1;
 	return (small);
@@ -103,9 +103,8 @@ void	ft_sort(void)
 	ft_define_chunk_size(get_data()->a);
 	get_data()->chunk->c = ft_create_chunk(get_data()->a, 0);
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
-	//ft_print_list(get_data()->a);
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
-	//ft_print_list(get_data()->a);
-	//write(1, "\n\n", 2);
-	//ft_print_list(get_data()->b);
+	ft_print_list(get_data()->a);
+	write(1, "\n\n", 2);
+	ft_print_list(get_data()->b);
 }
