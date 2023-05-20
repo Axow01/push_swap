@@ -4,14 +4,8 @@
         {
             "label": "clang++ build active file",
             "type": "shell",
-            "command": "clang",
-            "args": [
-                "-g",
-				"${workspaceFolder}/includes/libft/*.c",
-				"${fileDirname}/*.c",
-                "-o",
-                "${fileDirname}/push_swap"
-            ]
+            "command": "make",
+            "args": []
         }
     ]
 }

@@ -28,11 +28,17 @@ typedef struct s_pile
 	int				chunk_nb;
 }					t_pile;
 
+typedef struct s_chunk
+{
+	int	*c;
+	int	i;
+}				t_chunk;
+
 typedef struct s_data
 {
 	t_pile			*a;
 	t_pile			*b;
-	int				*chunk;
+	t_chunk			*chunk;
 }					t_data;
 
 /* Exit the program. Without any free to use only

@@ -21,6 +21,9 @@ t_data	*get_data(void)
 		data = ft_calloc(1, sizeof(t_data));
 		if (!data)
 			ft_exit("Failed to malloc the data structure.\n", 1);
+		data->chunk = ft_calloc(1, sizeof(t_chunk));
+		if (!data->chunk)
+			ft_exit_pointer("lul\n", NULL, data);
 	}
 	return (data);
 }

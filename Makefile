@@ -9,7 +9,7 @@ OBJS = $(patsubst src/%.c, bin/%.o, $(SRC))
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFTPATH = includes/libft/
 

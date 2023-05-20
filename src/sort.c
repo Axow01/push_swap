@@ -46,8 +46,9 @@ int	*ft_create_chunk(t_pile *pile, int chunk)
 		chunki[i] = current->nb;
 		current = current->next;
 	}
-	get_data()->chunk = chunki;
-	return (get_data()->chunk);
+	get_data()->chunk->c = chunki;
+	get_data()->chunk->i = get_data()->a->chunk_size;
+	return (get_data()->chunk->c);
 }
 
 int	ft_get_small(int *chunk)
@@ -58,18 +59,18 @@ int	ft_get_small(int *chunk)
 
 	i = -1;
 	small = chunk[0];
-	while (++i < get_data()->a->chunk_size)
+	while (++i < get_data()->chunk->i)
 	{
 		if (chunk[i] < small)
 			small = chunk[i];
 	}
 	i = -1;
-	new = malloc((get_data()->a->chunk_size - 1) * sizeof(int));
-	while (++i < get_data()->a->chunk_size)
+	new = ft_calloc(get_data()->a->chunk_size - 1, sizeof(int));
+	while (++i < get_data()->chunk->i)
 		if (chunk[i] != small)
 			new[i] = chunk[i];
-	printf("----%d----\n", (int)sizeof(new) / (int)sizeof(new[0]));
-	get_data()->chunk = new;
+	get_data()->chunk->c = new;
+	get_data()->chunk->i -= 1;
 	return (small);
 }
 
@@ -100,10 +101,10 @@ void	ft_push_small(t_pile *pile, int nb)
 void	ft_sort(void)
 {
 	ft_define_chunk_size(get_data()->a);
-	get_data()->chunk = ft_create_chunk(get_data()->a, 0);
-	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk));
+	get_data()->chunk->c = ft_create_chunk(get_data()->a, 0);
+	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
 	//ft_print_list(get_data()->a);
-	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk));
+	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
 	//ft_print_list(get_data()->a);
 	//write(1, "\n\n", 2);
 	//ft_print_list(get_data()->b);
