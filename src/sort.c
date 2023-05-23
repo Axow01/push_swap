@@ -92,6 +92,7 @@ void	ft_push_small(t_pile *pile, int nb)
 	}
 	if (i < ft_list_lenght(pile) / 2)
 		rotate = true;
+	(void)rotate;
 	printf("I: %d\n", i);
 	while (i-- > 0)
 		ft_ra(get_data(), 1);
