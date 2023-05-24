@@ -15,12 +15,14 @@ LIBFTPATH = includes/libft/
 
 LIBFT = libft.a
 
+LIBMMS = includes/libmms/
+
 #---   RULES   ---#
 
 all: $(NAME) logo
 
-$(NAME): $(OBJS) $(LIBFTPATH)$(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFTPATH) -lft -o $(NAME)
+$(NAME): $(OBJS) $(LIBFTPATH)$(LIBFT) $(LIBMMS)libmms.a
+	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFTPATH) -lft -L$(LIBMMS) -lmms -o $(NAME)
 
 bin/%.o: src/%.c
 	@mkdir -p bin/
@@ -30,13 +32,18 @@ $(LIBFTPATH)$(LIBFT):
 	@$(MAKE) -C $(LIBFTPATH)
 	@$(MAKE) -C $(LIBFTPATH) bonus
 
+$(LIBMMS)libmms.a:
+	$(MAKE) -C $(LIBMMS)
+
 clean:
 	@rm -rf bin/
 	@$(MAKE) -C $(LIBFTPATH) clean
+	$(MAKE) -C $(LIBMMS) clean
 
 fclean: clean
 	@rm $(NAME)
 	@$(MAKE) -C $(LIBFTPATH) fclean
+	$(MAKE) -C $(LIBMMS) fclean
 
 bonus: all
 

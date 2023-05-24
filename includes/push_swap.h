@@ -14,10 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <stdbool.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+# include "libmms/libmms.h"
 
 typedef struct s_pile
 {

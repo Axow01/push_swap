@@ -25,9 +25,7 @@ int	ft_add_value_list(t_pile *stack, int value, int who)
 	current = stack;
 	if (!stack)
 	{
-		stack = ft_calloc(1, sizeof(t_pile));
-		if (!stack)
-			ft_exit_pointer("Failled to add\n", NULL, get_data());
+		stack = mms_alloc(1, sizeof(t_pile));
 		stack->nb = value;
 		if (who)
 			get_data()->a = stack;
@@ -37,7 +35,7 @@ int	ft_add_value_list(t_pile *stack, int value, int who)
 	}
 	while (current->next)
 		current = current->next;
-	current->next = ft_calloc(1, sizeof(t_pile));
+	current->next = mms_alloc(1, sizeof(t_pile));
 	if (!current->next)
 		return (0);
 	current->next->previous = current;
@@ -89,7 +87,6 @@ int	main(int argc, char **argv)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);
 	ft_sort();
-	ft_free_stack(data->a);
-	ft_free_stack(data->b);
+	mms_kill(NULL, true, EXIT_SUCCESS);
 	return (0);
 }
