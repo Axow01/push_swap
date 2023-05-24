@@ -73,7 +73,7 @@ void	ft_pa(t_data *data)
 	data->a->previous = node;
 	node->nb = data->b->nb;
 	data->b = data->b->next;
-	data->b->previous = ft_free(data->b->previous);
+	data->b->previous = mms_free(data->b->previous);
 	data->a = node;
 	ft_printf("pa\n");
 }

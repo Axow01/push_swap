@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
 	data = get_data();
 	// data->a = ft_calloc(1, sizeof(t_pile));
-	data->b = ft_calloc(1, sizeof(t_pile));
+	data->b = mms_alloc(1, sizeof(t_pile));
 	if (!data->b || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);

@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
-
 typedef	struct s_pointer
 {
 	void				*ptr;
@@ -30,5 +29,7 @@ void	mms_kill(char *message, bool quit, int code);
 void	*mms_alloc(size_t size, size_t typesize);
 
 void	print_list();
+
+void	*mms_free(void *ptr);
 
 #endif
