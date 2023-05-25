@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 01:51:32 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/24 15:41:10 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:46:52 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	*mms_free(void *ptr)
 	return (NULL);
 }
 
-void	print_list()
+void	print_list(void)
 {
 	t_pointer	*current;
 
