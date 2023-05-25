@@ -41,7 +41,7 @@ clean:
 	$(MAKE) -C $(LIBMMS) clean
 
 fclean: clean
-	@rm $(NAME)
+	@rm -f $(NAME)
 	@$(MAKE) -C $(LIBFTPATH) fclean
 	$(MAKE) -C $(LIBMMS) fclean
 

@@ -66,7 +66,11 @@ int	ft_get_small(int *chunk)
 			small = chunk[i];
 	i = -1;
 	b = 0;
-	new = ft_calloc(get_data()->a->chunk_size - 1, sizeof(int));
+	// new = ft_calloc(get_data()->a->chunk_size - 1, sizeof(int));
+	if (get_data()->a->chunk_size - 1 < 0)
+		new = mms_alloc(1, sizeof(int));
+	else
+		new = mms_alloc(get_data()->a->chunk_size - 1, sizeof(int));
 	while (++i < get_data()->a->chunk_size)
 		if (chunk[i] != small)
 			new[b++] = chunk[i];
@@ -102,10 +106,9 @@ void	ft_push_small(t_pile *pile, int nb)
 
 void	ft_sort(void)
 {
-	ft_define_chunk_size(get_data()->a);
+	// ft_define_chunk_size(get_data()->a);
+	get_data()->a->chunk_size = 2;
 	get_data()->chunk->c = ft_create_chunk(get_data()->a, 0);
-	if (!get_data()->chunk->c)
-		ft_exit_pointer("Failled to chunk bitch\n", NULL, get_data());
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
 	ft_push_small(get_data()->a, ft_get_small(get_data()->chunk->c));
 	ft_print_list(get_data()->a);
