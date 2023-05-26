@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "../includes/push_swap.h"
 
 void	ft_define_chunk_size(t_pile *pile)

@@ -55,7 +55,7 @@ leaks --atExit -- ./push_swap $ARGS
 
 ## Random Notes
 
-- [ ] Make a Makefile logo when compiling the project.
+- [x] Make a Makefile logo when compiling the project.
 
 # May 26
 
