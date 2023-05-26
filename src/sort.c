@@ -35,7 +35,6 @@ int	*ft_create_chunk(t_pile *pile, int chunk)
 
 	if (!pile)
 		return (NULL);
-	// chunki = malloc(pile->chunk_size * sizeof(int));
 	chunki = mms_alloc(pile->chunk_size, sizeof(int));
 	current = pile;
 	i = -1;

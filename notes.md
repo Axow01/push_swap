@@ -56,3 +56,10 @@ leaks --atExit -- ./push_swap $ARGS
 ## Random Notes
 
 - [ ] Make a Makefile logo when compiling the project.
+
+# May 26
+
+So the algorithm that I previously wrote is not efficient egough for the push_swap project.
+
+- [ ] Inform myself on the divide and conquer method.
+
