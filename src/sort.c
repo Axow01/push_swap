@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../includes/push_swap.h"
 
 void	ft_sort(void)
