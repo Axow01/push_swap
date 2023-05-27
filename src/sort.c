@@ -13,7 +13,7 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-t_pile	*ft_create_chunk(size_t size, int statingPoint, t_pile *list)
+t_pile	*ft_create_chunk(int size, int statingPoint, t_pile *list)
 {
 	t_pile	*current;
 	t_pile	*new;
@@ -21,24 +21,25 @@ t_pile	*ft_create_chunk(size_t size, int statingPoint, t_pile *list)
 
 	i = 0;
 	new = NULL;
+	printf("List: ? Size: %d StatingPoint: %d\n", size, statingPoint);
 	if (!list || size <= 0 || statingPoint < 0)
 		return (NULL);
 	current = list;
 	while (current && i++ != statingPoint)
 		current = current->next;
 	i = 0;
-	while (current && i++ < (int)size)
+	while (current && i++ < size)
 	{
 		ft_add_value(new, current->nb);
 		current = current->next;
 	}
+	ft_print_list(new);
 	return (new);
 }
 
 void	ft_sort(void)
 {
-	t_pile	*chunk;
-
-	chunk = ft_create_chunk(2, 0, get_data()->a);
-	ft_print_list(chunk);
+	ft_print_list(get_data()->a);	
+	ft_print_list(ft_create_chunk(2, 0, get_data()->a));
+	printf("Got here !\n");
 }

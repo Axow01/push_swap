@@ -58,7 +58,6 @@ void	ft_add_value(t_pile *pile, int value)
 		pile->next = NULL;
 		return ;
 	}
-	printf("Got here lul\n");
 	current = pile;
 	while (current->next)
 		current = current->next;
