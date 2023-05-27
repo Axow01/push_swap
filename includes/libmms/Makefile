@@ -2,7 +2,7 @@
 
 NAME = libmms.a
 
-SRC = src/mms.c
+SRC = src/mms.c src/utils.c
 
 OBJS = $(patsubst src/%.c, bin/%.o, $(SRC))
 
@@ -16,6 +16,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
+	@echo "Libmms build complete..."
 
 bin/%.o: src/%.c
 	@mkdir -p bin/

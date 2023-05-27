@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:31:34 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/07 02:38:22 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/05/27 19:11:40 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
+	mms_set_alloc_fn(ft_calloc);
 	data = get_data();
 	// data->a = ft_calloc(1, sizeof(t_pile));
 	data->a = NULL;
