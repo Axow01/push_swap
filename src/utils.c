@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 t_data	*get_data(void)
 {
@@ -21,6 +22,8 @@ t_data	*get_data(void)
 		// data = ft_calloc(1, sizeof(t_data));
 		data = mms_alloc(1, sizeof(t_data));
 		data->chunk = mms_alloc(1, sizeof(t_chunk));
+		data->a = NULL;
+		data->b = NULL;
 	}
 	return (data);
 }
@@ -42,6 +45,27 @@ void	ft_remove_element(t_pile *pile, int index)
 	current->next->previous = buffer;
 	current = ft_free(current);
 	current = buffer;
+}
+
+void	ft_add_value(t_pile *pile, int value)
+{
+	t_pile	*current;
+
+	if (!pile)
+	{
+		pile = mms_alloc(1, sizeof(t_pile));
+		pile->nb = value;
+		pile->next = NULL;
+		return ;
+	}
+	printf("Got here lul\n");
+	current = pile;
+	while (current->next)
+		current = current->next;
+	current->next = mms_alloc(1, sizeof(t_pile));
+	current = current->next;
+	current->nb = value;
+	current->next = NULL;
 }
 
 void	*ft_free(void *ptr)

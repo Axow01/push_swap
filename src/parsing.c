@@ -68,9 +68,9 @@ void	ft_free_double(char **pointer)
 int	ft_parsing(char **args, int argc, t_data *data)
 {
 	char	**numbers;
-
+	if (argc == 2)
+		return (0);
 	if (!ft_check_args(args, argc, 1) && argc != 2)
-		return (0); if (argc == 2)
 	{
 		numbers = ft_split(args[1], ' ');
 		if (!numbers)

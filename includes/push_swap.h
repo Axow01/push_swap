@@ -113,4 +113,7 @@ void				ft_print_list(t_pile *a);
 /* This give the variable data. */
 t_data				*get_data(void);
 
+/* This function add a value to the list given, it's not like the other one because
+this one has nothing to do with stack a or b. */ 
+void				ft_add_value(t_pile *pile, int value);
 #endif

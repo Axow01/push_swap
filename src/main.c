@@ -27,12 +27,15 @@ int	ft_add_value_list(t_pile *stack, int value, int who)
 	{
 		stack = mms_alloc(1, sizeof(t_pile));
 		stack->nb = value;
+		stack->next = NULL;
 		if (who)
 			get_data()->a = stack;
 		else
 			get_data()->b = stack;
 		return (1);
 	}
+	if (!current)
+		return (0);
 	while (current->next)
 		current = current->next;
 	current->next = mms_alloc(1, sizeof(t_pile));
@@ -41,6 +44,7 @@ int	ft_add_value_list(t_pile *stack, int value, int who)
 	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
+	current->next = NULL;
 	return (1);
 }
 
@@ -65,6 +69,8 @@ void	ft_print_list(t_pile *a)
 {
 	t_pile	*current;
 
+	if (!a)
+		return ;
 	current = a;
 	while (current->next && current->next != a)
 	{
@@ -82,6 +88,7 @@ int	main(int argc, char **argv)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
 	data = get_data();
 	// data->a = ft_calloc(1, sizeof(t_pile));
+	data->a = NULL;
 	data->b = mms_alloc(1, sizeof(t_pile));
 	if (!data->b || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
