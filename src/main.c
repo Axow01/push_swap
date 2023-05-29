@@ -34,13 +34,9 @@ int	ft_add_value_list(t_pile *stack, int value, int who)
 			get_data()->b = stack;
 		return (1);
 	}
-	if (!current)
-		return (0);
 	while (current->next)
 		current = current->next;
 	current->next = mms_alloc(1, sizeof(t_pile));
-	if (!current->next)
-		return (0);
 	current->next->previous = current;
 	current = current->next;
 	current->nb = value;
@@ -88,7 +84,6 @@ int	main(int argc, char **argv)
 		ft_exit("./push_swap <number> <number> <number>> ...", 1);
 	mms_set_alloc_fn(ft_calloc);
 	data = get_data();
-	// data->a = ft_calloc(1, sizeof(t_pile));
 	data->a = NULL;
 	data->b = mms_alloc(1, sizeof(t_pile));
 	if (!data->b || ft_parsing(argv, argc, data) == 0)

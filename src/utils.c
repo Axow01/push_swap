@@ -19,7 +19,6 @@ t_data	*get_data(void)
 
 	if (!data)
 	{
-		// data = ft_calloc(1, sizeof(t_data));
 		data = mms_alloc(1, sizeof(t_data));
 		data->chunk = mms_alloc(1, sizeof(t_chunk));
 		data->a = NULL;

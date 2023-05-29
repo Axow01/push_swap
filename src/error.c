@@ -14,13 +14,6 @@
 
 void	ft_exit_pointer(char *message, void *p, t_data *data)
 {
-	// p = ft_free(p);
-	// ft_free_stack(data->a);
-	// ft_free_stack(data->b);
-	// if (data->chunk)
-	// 	free(data->chunk);
-	// ft_printf("%s", message);
-	// exit(1);
 	(void)p;
 	(void)data;
 	mms_kill(message, true, EXIT_FAILURE);
