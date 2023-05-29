@@ -16,6 +16,8 @@ void	ft_pb(t_data *data)
 {
 	t_pile	*node;
 
+	if (!data->a)
+		return ;
 	node = mms_alloc(1, sizeof(t_pile));
 	if (!node)
 		ft_exit("Calloc failled!\n", 1);
@@ -23,7 +25,8 @@ void	ft_pb(t_data *data)
 	data->b->previous = node;
 	node->nb = data->a->nb;
 	data->a = data->a->next;
-	data->a->previous = mms_free(data->a->previous);
+	if (data->a)
+		data->a->previous = mms_free(data->a->previous);
 	data->b = node;
 	ft_printf("pb\n");
 }

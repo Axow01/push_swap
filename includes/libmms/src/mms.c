@@ -79,6 +79,8 @@ void	*mms_free(void *ptr)
 {
 	t_pointer	*current;
 
+	if (!ptr)
+		return (NULL);
 	current = get_data_mms();
 	while (current)
 	{
