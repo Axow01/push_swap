@@ -21,7 +21,7 @@
 typedef struct s_pointer
 {
 	void				*ptr;
-	struct s_pointer		*next;
+	struct s_pointer	*next;
 	void				*(*f)(size_t, size_t);
 }				t_pointer;
 
