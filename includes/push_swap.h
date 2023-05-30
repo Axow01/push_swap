@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include "libmms/libmms.h"
+# include "libmms/libmms.h" // This is the memory management system.
 
 typedef struct s_pile
 {

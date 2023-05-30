@@ -64,16 +64,13 @@ void	ft_ss(t_pile *a, t_pile *b)
 
 void	ft_pa(t_data *data)
 {
-	t_pile	*node;
+	t_pile	*buffer;
 
-	node = ft_calloc(1, sizeof(t_pile));
-	if (!node)
-		ft_exit("Calloc failled!\n", 1);
-	node->next = data->a;
-	data->a->previous = node;
-	node->nb = data->b->nb;
-	data->b = data->b->next;
-	data->b->previous = mms_free(data->b->previous);
-	data->a = node;
+	if (!data->b || !data->a)
+		return ;
+	buffer = data->b->next;
+	data->b->next = data->a;
+	data->a = data->b;
+	data->b = buffer;
 	ft_printf("pa\n");
 }

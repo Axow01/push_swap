@@ -14,20 +14,14 @@
 
 void	ft_pb(t_data *data)
 {
-	t_pile	*node;
+	t_pile	*buffer;
 
-	if (!data->a)
+	if (!data->a || !data->b || !data)
 		return ;
-	node = mms_alloc(1, sizeof(t_pile));
-	if (!node)
-		ft_exit("Calloc failled!\n", 1);
-	node->next = data->b;
-	data->b->previous = node;
-	node->nb = data->a->nb;
-	data->a = data->a->next;
-	if (data->a)
-		data->a->previous = mms_free(data->a->previous);
-	data->b = node;
+	buffer = data->a->next;
+	data->a->next = data->b;
+	data->b = data->a;
+	data->a = buffer;
 	ft_printf("pb\n");
 }
 
