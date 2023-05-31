@@ -66,7 +66,7 @@ void	ft_pa(t_data *data)
 {
 	t_pile	*buffer;
 
-	if (!data->b || !data->a)
+	if (!data->b || !data->a || !data)
 		return ;
 	buffer = data->b->next;
 	data->b->next = data->a;

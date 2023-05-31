@@ -44,23 +44,6 @@ int	ft_add_value_list(t_pile *stack, int value, int who)
 	return (1);
 }
 
-void	ft_free_stack(t_pile *stack)
-{
-	t_pile	*current;
-	t_pile	*temp;
-
-	if (!stack)
-		return ;
-	current = stack;
-	while (current->next && current)
-	{
-		temp = current;
-		current = current->next;
-		temp = ft_free(temp);
-	}
-	current = ft_free(current);
-}
-
 void	ft_print_list(t_pile *a)
 {
 	t_pile	*current;
@@ -89,7 +72,7 @@ int	main(int argc, char **argv)
 	if (!data->b || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);
-	ft_sort();
+	ft_sort(argc - 1);
 	mms_kill(NULL, true, EXIT_SUCCESS);
 	return (0);
 }

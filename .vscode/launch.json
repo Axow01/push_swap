@@ -4,13 +4,13 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-	
+
 		{
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/push_swap",
-			"args": ["10", "20", "30", "40", "50", "60"],
+			"args": ["50", "20", "40", "30", "60", "10", "5"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

@@ -20,11 +20,19 @@ t_data	*get_data(void)
 	if (!data)
 	{
 		data = mms_alloc(1, sizeof(t_data));
-		data->chunk = mms_alloc(1, sizeof(t_chunk));
 		data->a = NULL;
 		data->b = NULL;
 	}
 	return (data);
+}
+
+void	ft_print_formated(void)
+{
+	write(1, "\nA:\n", 4);
+	ft_print_list(get_data()->a);
+	write(1, "\nB:\n", 4);
+	ft_print_list(get_data()->b);
+	write(1, "\n", 1);
 }
 
 void	ft_remove_element(t_pile *pile, int index)
@@ -70,5 +78,5 @@ void	*ft_free(void *ptr)
 {
 	if (ptr)
 		free(ptr);
-	return (0);
+	return (NULL);
 }

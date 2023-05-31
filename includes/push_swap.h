@@ -35,7 +35,7 @@ typedef struct s_data
 {
 	t_pile			*a;
 	t_pile			*b;
-	t_chunk			*chunk;
+	int				args;
 }					t_data;
 
 /* Exit the program. Without any free to use only
@@ -47,7 +47,7 @@ to free two pointers before quitting. */
 void				ft_exit_pointer(char *message, void *p, t_data *data);
 
 /* This function frees all the elements of the stack. */
-void				ft_free_stack(t_pile *stack);
+// void				ft_free_stack(t_pile *stack);
 
 /* Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one or no elements.
@@ -105,7 +105,7 @@ If there is then free and exit. */
 void				ft_check_twins(t_data *data);
 
 /* This sort the stacks. */
-void				ft_sort(void);
+void				ft_sort(int args);
 
 /* Prints a stack you .... */
 void				ft_print_list(t_pile *a);
@@ -114,6 +114,6 @@ void				ft_print_list(t_pile *a);
 t_data				*get_data(void);
 
 /* This function add a value to the list given, it's not like the other one because
-this one has nothing to do with stack a or b. */ 
+this one has nothing to do with stack a or b. */
 void				ft_add_value(t_pile *pile, int value);
 #endif
