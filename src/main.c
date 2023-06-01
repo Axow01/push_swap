@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 	data = get_data();
 	data->a = NULL;
 	data->b = mms_alloc(1, sizeof(t_pile));
-	data->b->nb = 2;
+	data->b->nb = 5;
 	ft_add_value(data->b, 20);
 	if (!data->b || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
@@ -97,9 +97,8 @@ int	main(int argc, char **argv)
 	ft_ra(get_data(), 1);
 	ft_pa(get_data());
 	int	i = ft_list_lenght(get_data()->a);
-	while (--i > 0)
+	while (i-- > 0)
 		ft_rra(get_data());
-	ft_rra(get_data());
 	ft_print_formated();
 	mms_kill(NULL, true, EXIT_SUCCESS);
 	return (0);
