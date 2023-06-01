@@ -59,6 +59,22 @@ void	ft_print_list(t_pile *a)
 	ft_printf("%d\n", current->nb);
 }
 
+bool	ft_check_sort()
+{
+	t_pile	*current;
+	int		nb;
+
+	current = get_data()->a;
+	nb = current->nb;
+	while (current)
+	{
+		if (current->nb < nb)
+			return (false);
+		current = current->next;
+	}
+	return (true);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -72,7 +88,7 @@ int	main(int argc, char **argv)
 	if (!data->b || ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);
-	ft_sort(argc - 1);
+	ft_sort();
 	mms_kill(NULL, true, EXIT_SUCCESS);
 	return (0);
 }

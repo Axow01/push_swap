@@ -12,8 +12,47 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_sort(int args)
+int	ft_get_index(int nb)
 {
-	printf("%d\n", args);
-	return ;
+	t_pile	*current;
+	int		i;
+
+	current = get_data()->a;
+	i = 0;
+	while (current)
+	{
+		printf("Current->nb: %d Nb: %d\n", current->nb, nb);
+		if (current->nb == nb)
+			return (i);
+		i++;
+		current = current->next;
+	}
+	return (0);
+}
+
+void	ft_sort_small()
+{
+	t_pile	*current;
+	int		nb;
+
+	current = get_data()->a;
+	nb = current->nb;
+	while (current)
+	{
+		if (current->nb > nb)
+			nb = current->nb;
+		current = current->next;
+	}
+	printf("Index: %d\n", ft_get_index(nb));
+	if (ft_get_index(nb) == 0)
+		ft_ra(get_data(), 1);
+	if (!ft_check_sort())
+		ft_sa(get_data()->a);
+}
+
+void	ft_sort(void)
+{
+	if (ft_list_lenght(get_data()->a) <=3) 
+		ft_sort_small();
+	ft_print_formated();
 }

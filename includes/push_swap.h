@@ -105,7 +105,7 @@ If there is then free and exit. */
 void				ft_check_twins(t_data *data);
 
 /* This sort the stacks. */
-void				ft_sort(int args);
+void				ft_sort(void);
 
 /* Prints a stack you .... */
 void				ft_print_list(t_pile *a);
@@ -116,4 +116,9 @@ t_data				*get_data(void);
 /* This function add a value to the list given, it's not like the other one because
 this one has nothing to do with stack a or b. */
 void				ft_add_value(t_pile *pile, int value);
+
+void				ft_print_formated(void);
+
+bool				ft_check_sort();
+
 #endif
