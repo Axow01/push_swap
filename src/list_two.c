@@ -80,11 +80,16 @@ void	ft_rra(t_data *data)
 	t_pile	*current;
 
 	current = data->a;
+	if (!current)
+		return ;
 	while (current->next)
 		current = current->next;
 	current->next = data->a;
-	current->previous->next = NULL;
-	current->previous = NULL;
+	if (current->previous)
+	{
+		current->previous->next = NULL;
+		current->previous = NULL;
+	}
 	data->a->previous = current;
 	data->a = current;
 	write(1, "rra\n", 4);
