@@ -20,12 +20,12 @@ Here's how this algorithm would sort the list (34, 56, 53, 2, 68):
 
 ```
 Stack A: 34 56 53 2 68
-Stack B: 
+Stack B:
 ```
 - Find the smallest value, that is 2. Put it in first position using ra or rra.
 ```
 Stack A: 2 68 34 56 53
-Stack B: 
+Stack B:
 ```
 - Then pb(push B).
 ```
@@ -40,7 +40,7 @@ Stack B: 2 34 53 56
 - Then while stack b is not empty, rra(reverse rotate b) pa (push a).
 ```
 Stack A: 2 34 53 56 68
-Stack B: 
+Stack B:
 ```
 
 ## Leaks and Protections
@@ -62,4 +62,6 @@ leaks --atExit -- ./push_swap $ARGS
 So the algorithm that I previously wrote is not efficient egough for the push_swap project.
 
 - [ ] Inform myself on the divide and conquer method.
+
+https://medium.com/@ayogun/push-swap-c1f5d2d41e97
 

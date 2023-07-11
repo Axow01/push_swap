@@ -85,7 +85,7 @@ void				ft_rr(t_data *data);
 
 /* Shift down all the element of stack a by 1.
 The last element become the first. */
-void				ft_rra(t_data *data);
+// void				ft_rra(t_data *data);
 
 /* Shift down all the elements of stack b by 1.
 The last element become the first. */
