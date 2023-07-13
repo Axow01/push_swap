@@ -83,9 +83,8 @@ void				ft_rb(t_data *data, int print);
 /* ft_ra and ft_rb at the same time. */
 void				ft_rr(t_data *data);
 
-/* Shift down all the element of stack a by 1.
-The last element become the first. */
-// void				ft_rra(t_data *data);
+/* Shift down all the element of stack a by 1. */
+void				ft_rra(t_data *data);
 
 /* Shift down all the elements of stack b by 1.
 The last element become the first. */
@@ -120,5 +119,7 @@ void				ft_add_value(t_pile *pile, int value);
 void				ft_print_formated(void);
 
 bool				ft_check_sort();
+
+int					ft_get_largest(t_pile *pile);
 
 #endif

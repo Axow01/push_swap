@@ -70,7 +70,11 @@ void	ft_pa(t_data *data)
 		return ;
 	buffer = data->b->next;
 	data->b->next = data->a;
+	data->b->next->previous = data->b;
+	data->b->previous = NULL;
 	data->a = data->b;
 	data->b = buffer;
+	if (data->b)
+		data->b->previous = NULL;
 	ft_printf("pa\n");
 }

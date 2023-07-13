@@ -38,3 +38,19 @@ void	ft_check_twins(t_data *data)
 		current = current->next;
 	}
 }
+
+int	ft_get_largest(t_pile *pile)
+{
+	t_pile	*current;
+	int		largestnb;
+
+	current = pile;
+	largestnb = current->nb;
+	while (current)
+	{
+		if (current->nb > largestnb)
+			largestnb = current->nb;
+		current = current->next;
+	}
+	return (largestnb);
+}

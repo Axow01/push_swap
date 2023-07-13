@@ -21,7 +21,6 @@ int	ft_get_index(int nb)
 	i = 0;
 	while (current)
 	{
-		printf("Current->nb: %d Nb: %d\n", current->nb, nb);
 		if (current->nb == nb)
 			return (i);
 		i++;
@@ -30,7 +29,7 @@ int	ft_get_index(int nb)
 	return (0);
 }
 
-void	ft_sort_small()
+void	ft_sort_small(void)
 {
 	t_pile	*current;
 	int		nb;
@@ -43,16 +42,57 @@ void	ft_sort_small()
 			nb = current->nb;
 		current = current->next;
 	}
-	printf("Index: %d\n", ft_get_index(nb));
-	if (ft_get_index(nb) == 0)
+	while (ft_get_index(nb) != 2)
 		ft_ra(get_data(), 1);
 	if (!ft_check_sort())
 		ft_sa(get_data()->a);
 }
 
+t_pile	*get_node(t_pile *pile, int nb)
+{
+	t_pile	*current;
+
+	current = pile;
+	while (current)
+	{
+		if (current->nb == nb)
+			return (current);
+		current = current->next;
+	}
+	return (NULL);
+}
+
+void	ft_transfer(void)
+{
+	int		first_nb;
+	t_pile	*node;
+
+	while (ft_list_lenght(get_data()->a) > 3)
+	{
+		first_nb = get_data()->a->nb;
+		ft_pb(get_data());
+		node = get_node(get_data()->b, first_nb);
+		if (first_nb < ft_get_largest(get_data()->b))
+		{
+			node = get_node(get_data()->b, ft_get_largest(get_data()->b));
+			if (node->next && node->next->nb < first_nb)
+				ft_sb(get_data()->b);
+			else
+				ft_rb(get_data(), 1);
+		}
+	}
+	ft_sort_small();
+	while (ft_list_lenght(get_data()->b))
+		ft_pa(get_data());
+}
+
 void	ft_sort(void)
 {
-	if (ft_list_lenght(get_data()->a) <=3) 
+	if (ft_list_lenght(get_data()->a) <= 3)
 		ft_sort_small();
-	ft_print_formated();
+	ft_transfer();
+	ft_rra(get_data());
+	ft_rra(get_data());
+	ft_rra(get_data());
+	// ft_print_formated();
 }

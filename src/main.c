@@ -51,7 +51,7 @@ void	ft_print_list(t_pile *a)
 	if (!a)
 		return ;
 	current = a;
-	while (current->next && current->next != a)
+	while (current->next && current->next)
 	{
 		ft_printf("%d\n", current->nb);
 		current = current->next;
@@ -84,12 +84,11 @@ int	main(int argc, char **argv)
 	mms_set_alloc_fn(ft_calloc);
 	data = get_data();
 	data->a = NULL;
-	data->b = mms_alloc(1, sizeof(t_pile));
-	if (!data->b || ft_parsing(argv, argc, data) == 0)
+	data->b = NULL;
+	if (ft_parsing(argv, argc, data) == 0)
 		ft_exit_pointer("Calloc error or parsing!\n", NULL, data);
 	ft_check_twins(data);
 	ft_sort();
-
 	mms_kill(NULL, true, EXIT_SUCCESS);
 	return (0);
 }
