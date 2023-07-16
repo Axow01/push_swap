@@ -22,6 +22,8 @@ typedef struct s_pile
 	struct s_pile	*previous;
 	struct s_pile	*next;
 	int				step_needed;
+	int				rotate;
+	int				rrotate;
 	int				index;
 }					t_pile;
 
@@ -123,5 +125,13 @@ bool				ft_check_sort();
 int					ft_get_largest(t_pile *pile);
 
 int					ft_get_smallest(t_pile *pile);
+
+int					ft_smallest_value(int nb, int nb2);
+
+void				ft_indexing(t_pile *pile);
+
+void				ft_all_cost(t_pile *pile);
+
+t_pile				*get_node(t_pile *pile, int nb);
 
 #endif

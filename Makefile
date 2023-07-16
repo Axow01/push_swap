@@ -3,7 +3,7 @@
 NAME = push_swap
 
 SRC = src/main.c src/error.c src/list.c src/list_two.c src/list_three.c \
-	src/parsing.c src/sort.c src/utils.c
+	src/parsing.c src/sort.c src/utils.c src/cost.c src/sort_part_two.c
 
 OBJS = $(patsubst src/%.c, bin/%.o, $(SRC))
 

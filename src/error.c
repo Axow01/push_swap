@@ -70,3 +70,10 @@ int	ft_get_smallest(t_pile *pile)
 	}
 	return (smallestnb);
 }
+
+int	ft_smallest_value(int nb, int nb2)
+{
+	if (nb > nb2)
+		return (nb2);
+	return (nb);
+}
