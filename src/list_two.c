@@ -73,6 +73,7 @@ void	ft_rr(t_data *data)
 {
 	ft_ra(data, 0);
 	ft_rb(data, 0);
+	ft_printf("rr\n");
 }
 
 //void	ft_rra(t_data *data)

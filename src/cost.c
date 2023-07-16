@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 10:55:35 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/16 10:58:51 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/16 13:51:14 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int	ft_get_future_pos(t_pile *node)
 		}
 		stack_b = stack_b->next;
 	}
-	return (smallest_diff_index);
+	if (smallest_diff_index + 1 != ft_list_lenght(get_data()->b))
+		return (smallest_diff_index + 1);
+	return (0);
 }
 
 int	ft_get_rotations_side(t_pile *node, t_pile *stack)
 {
-	if (ft_list_lenght(stack) <= 3)
+	if (ft_list_lenght(stack) < 3)
 		return (2);
 	if (node->index + 1 > ft_list_lenght(stack) / 2)
 		return (1);
@@ -58,7 +60,7 @@ int	ft_cost_optimise(t_pile *node, t_pile *future_node)
 		total_eco += ft_smallest_value(node->rotate, future_node->rotate);
 	else if (node->rrotate && future_node->rrotate)
 		total_eco += ft_smallest_value(node->rrotate, future_node->rrotate);
-	else if (ft_list_lenght(get_data()->b) <= 3 && (node->rotate || node->rrotate))
+	else if (ft_list_lenght(get_data()->b) < 3 && (node->rotate || node->rrotate))
 		total_eco += future_node->rotate + future_node->rrotate;
 	return (total_eco);
 }

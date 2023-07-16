@@ -63,6 +63,7 @@ void	ft_add_value(t_pile *pile, int value)
 		pile = mms_alloc(1, sizeof(t_pile));
 		pile->nb = value;
 		pile->next = NULL;
+		get_data()->b = pile;
 		return ;
 	}
 	current = pile;
