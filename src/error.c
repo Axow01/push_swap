@@ -54,3 +54,19 @@ int	ft_get_largest(t_pile *pile)
 	}
 	return (largestnb);
 }
+
+int	ft_get_smallest(t_pile *pile)
+{
+	int		smallestnb;
+	t_pile	*current;
+
+	current = pile;
+	smallestnb = current->nb;
+	while (current)
+	{
+		if (current->nb < smallestnb)
+			smallestnb = current->nb;
+		current = current->next;
+	}
+	return (smallestnb);
+}

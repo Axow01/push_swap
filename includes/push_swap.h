@@ -21,8 +21,8 @@ typedef struct s_pile
 	int				nb;
 	struct s_pile	*previous;
 	struct s_pile	*next;
-	int				chunk_size;
-	int				chunk_nb;
+	int				step_needed;
+	int				index;
 }					t_pile;
 
 typedef struct s_chunk
@@ -121,5 +121,7 @@ void				ft_print_formated(void);
 bool				ft_check_sort();
 
 int					ft_get_largest(t_pile *pile);
+
+int					ft_get_smallest(t_pile *pile);
 
 #endif

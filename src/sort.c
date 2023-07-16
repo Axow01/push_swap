@@ -55,44 +55,90 @@ t_pile	*get_node(t_pile *pile, int nb)
 	current = pile;
 	while (current)
 	{
-		if (current->nb == nb)
+		if (current->index == nb)
 			return (current);
 		current = current->next;
 	}
 	return (NULL);
 }
 
-void	ft_transfer(void)
+void	ft_indexing(t_pile *pile)
 {
-	int		first_nb;
-	t_pile	*node;
+	t_pile	*current;
+	int		i;
 
-	while (ft_list_lenght(get_data()->a) > 3)
+	current = pile;
+	i = 0;
+	while (current)
 	{
-		first_nb = get_data()->a->nb;
-		ft_pb(get_data());
-		node = get_node(get_data()->b, first_nb);
-		if (first_nb < ft_get_largest(get_data()->b))
-		{
-			node = get_node(get_data()->b, ft_get_largest(get_data()->b));
-			if (node->next && node->next->nb < first_nb)
-				ft_sb(get_data()->b);
-			else
-				ft_rb(get_data(), 1);
-		}
+		current->index = i++;
+		current = current->next;
 	}
-	ft_sort_small();
-	while (ft_list_lenght(get_data()->b))
-		ft_pa(get_data());
+}
+
+int	ft_get_future_pos(t_pile *node)
+{
+	t_pile	*stack_b;
+	int		smallest_diff;
+	int		smallest_diff_index;
+
+	stack_b = get_data()->b;
+	while (stack_b->nb != ft_get_largest(get_data()->b))
+		stack_b = stack_b->next;
+	smallest_diff = ft_get_largest(get_data()->b) - node->nb;
+	smallest_diff_index = stack_b->index;
+	if (node->nb > ft_get_largest(get_data()->b) || node->nb < ft_get_smallest(get_data()->b))
+		return (stack_b->index);
+	stack_b = get_data()->b;
+	while (stack_b)
+	{
+		if (stack_b->nb > node->nb && (stack_b->nb - node->nb) < smallest_diff)
+		{
+			smallest_diff = stack_b->nb - node->nb;
+			smallest_diff_index = stack_b->index;
+		}
+		stack_b = stack_b->next;
+	}
+	return (smallest_diff_index);
+}
+
+int	ft_get_rotations_side(t_pile *node, t_pile *stack)
+{
+	if (ft_list_lenght(stack) <= 3)
+		return (2);
+	if (node->index + 1 > ft_list_lenght(stack) / 2)
+		return (1);
+	return (0);
+}
+
+int	ft_cost(t_pile *node)
+{
+	int	total;
+	int	b_side;
+
+}
+
+void	ft_all_cost(t_pile *pile)
+{
+	t_pile *current;
+
+	current = pile;
+	while (current)
+	{
+		current->step_needed = ft_cost(current);
+		ft_printf("Cost: %d - NB: %d\n", current->step_needed, current->nb);
+		current = current->next;
+	}
 }
 
 void	ft_sort(void)
 {
 	if (ft_list_lenght(get_data()->a) <= 3)
 		ft_sort_small();
-	ft_transfer();
-	ft_rra(get_data());
-	ft_rra(get_data());
-	ft_rra(get_data());
-	// ft_print_formated();
+	ft_pb(get_data());
+	ft_pb(get_data());
+	ft_indexing(get_data()->a);
+	ft_indexing(get_data()->b);
+	ft_all_cost(get_data()->a);
+	ft_print_formated();
 }
