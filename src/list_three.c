@@ -20,7 +20,8 @@ void	ft_rrb(t_data *data)
 	while (current->next)
 		current = current->next;
 	current->next = data->b;
-	current->previous->next = NULL;
+	if (current->previous)
+		current->previous->next = NULL;
 	current->previous = NULL;
 	data->b->previous = current;
 	data->b = current;
@@ -35,15 +36,21 @@ void	ft_rrr(t_data *data)
 	while (current->next)
 		current = current->next;
 	current->next = data->b;
+	if (current->previous)
+		current->previous->next = NULL;
 	current->previous = NULL;
 	data->b->previous = current;
 	data->b = current;
 	current = data->a;
+	if (!current)
+		return ;
 	while (current->next)
 		current = current->next;
 	current->next = data->a;
+	if (current->previous)
+		current->previous->next = NULL;
+	current->next->previous = current;
 	current->previous = NULL;
-	data->a->previous = current;
-	data->b = current;
+	data->a = current;
 	write(1, "rrr\n", 4);
 }

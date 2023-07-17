@@ -15,15 +15,20 @@
 t_pile	*get_smallest_node(t_pile *pile, int nb)
 {
 	t_pile	*current;
-
-	current = pile;
-	while (current)
+current = pile; while (current)
 	{
 		if (current->nb == nb)
 			return (current);
 		current = current->next;
 	}
 	return (NULL);
+}
+
+int	ft_min_biggest(int nb, int nb2)
+{
+	if (nb > nb2)
+		return (nb - nb2);
+	return (nb2 - nb);
 }
 
 int	ft_find_position_a(t_pile *node)
@@ -33,29 +38,25 @@ int	ft_find_position_a(t_pile *node)
 	int		smallest_index;
 
 	ft_indexing(get_data()->a);
-	smallest_gap = node->nb - ft_get_smallest(get_data()->a);
+	smallest_gap = ft_min_biggest(node->nb, ft_get_smallest(get_data()->a));
 	smallest_index = get_smallest_node(get_data()->a, ft_get_smallest(get_data()->a))->index;
 	current = get_data()->a;
 	while (current)
 	{
-		if (current->nb < node->nb && (node->nb - current->nb < smallest_gap || smallest_gap <= 0))
+		if (smallest_gap >= ft_min_biggest(node->nb, current->nb))
 		{
-			smallest_gap = node->nb - current->nb;
+			smallest_gap = ft_min_biggest(node->nb, current->nb);
 			smallest_index = current->index;
 		}
 		current = current->next;
 	}
-	smallest_index += 1;
 	node->rotate = 0;
 	node->rrotate = 0;
-	if (smallest_index == ft_list_lenght(get_data()->a) && node->nb > get_node(get_data()->a, smallest_index - 1)->nb)
+	if (get_node(get_data()->a, smallest_index)->nb < node->nb)
+		smallest_index++;
+	if (smallest_index == ft_list_lenght(get_data()->a))
 		smallest_index = 0;
-	else if (node->nb < get_node(get_data()->a, smallest_index - 1)->nb && smallest_index == ft_list_lenght(get_data()->a))
-	{
-		node->rrotate = 1;
-		return (smallest_index);
-	}
-	if (smallest_index > ft_list_lenght(get_data()->a) / 2)
+	else if (smallest_index > ft_list_lenght(get_data()->a) / 2)
 		node->rrotate = ft_list_lenght(get_data()->a) - smallest_index;
 	else
 		node->rotate = smallest_index;
@@ -78,6 +79,8 @@ void	finish(void)
 
 	while (ft_list_lenght(get_data()->b) > 0)
 	{
+		// if (get_data()->b->nb == 5)
+		// 	return ;
 		ft_indexing(get_data()->a);
 		ft_find_position_a(get_data()->b);
 		ft_rotate_and_push_a(get_data()->b);
