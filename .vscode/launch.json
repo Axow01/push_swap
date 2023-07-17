@@ -10,12 +10,13 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/push_swap",
-			"args": ["40 10 20 6 2 1 5"],
+			"args": ["21 66 40 31 100 68 70 20 54 19 29 28 99 80 60 34 87 47 14 25 48 3 57 81 38 30 74 12 6 97 65 39 7 90 76 13 51 71 79 95 15 58 69 52 41 72 92 83 45 35 82 89 44 26 78 91 75 10 43 62 63 73 24 5 67 85 18 32 8 4 86 46 53 17 33 50 49 11 61 0 9 84 37 36 22 59 27 16 77 56"],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "lldb",
+			"MIMode": "gdb",
+			"miDebuggerPath": "/usr/bin/gdb",
 			"preLaunchTask": "clang++ build active file"
 		}
 

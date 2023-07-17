@@ -136,4 +136,8 @@ t_pile				*get_node(t_pile *pile, int nb);
 
 int					ft_get_future_pos(t_pile *node);
 
+void				ft_transfer(void);
+
+void				finish(void);
+
 #endif
