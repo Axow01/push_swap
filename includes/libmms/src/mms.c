@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 01:51:32 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/05/27 18:57:34 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/18 14:01:53 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ void	mms_kill(char *message, bool quit, int code)
 void	*mms_alloc(size_t size, size_t typesize)
 {
 	t_pointer	*current;
+	void		*p;
 
 	if (size <= 0)
 		size = 1;
 	if (!get_data_mms()->ptr)
 	{
-		get_data_mms()->ptr = get_data_mms()->f(size, typesize);
+		p = get_data_mms()->f(size, typesize);
+		get_data_mms()->ptr = p;
 		if (!get_data_mms()->ptr)
 			mms_kill("Failled to allocate ! \n", true, EXIT_FAILURE);
 		get_data_mms()->next = NULL;

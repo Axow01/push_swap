@@ -54,3 +54,39 @@ void	ft_rrr(t_data *data)
 	data->a = current;
 	write(1, "rrr\n", 4);
 }
+
+int	ft_get_smallgap(t_pile *node)
+{
+	t_pile	*current;
+	int		smallest_gap;
+	int		smallest_index;
+
+	smallest_gap = ft_min_biggest(node->nb, ft_get_smallest(get_data()->a));
+	smallest_index = get_smallest_node(get_data()->a,
+			ft_get_smallest(get_data()->a))->index;
+	current = get_data()->a;
+	while (current)
+	{
+		if (smallest_gap >= ft_min_biggest(node->nb, current->nb))
+		{
+			smallest_gap = ft_min_biggest(node->nb, current->nb);
+			smallest_index = current->index;
+		}
+		current = current->next;
+	}
+	return (smallest_index);
+}
+
+void	ft_indexing(t_pile *pile)
+{
+	t_pile	*current;
+	int		i;
+
+	current = pile;
+	i = 0;
+	while (current)
+	{
+		current->index = i++;
+		current = current->next;
+	}
+}

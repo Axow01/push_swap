@@ -59,7 +59,7 @@ void	ft_print_list(t_pile *a)
 	ft_printf("%d\n", current->nb);
 }
 
-bool	ft_check_sort()
+bool	ft_check_sort(void)
 {
 	t_pile	*current;
 	int		nb;

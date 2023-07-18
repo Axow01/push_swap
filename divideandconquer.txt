@@ -1,4 +1,0 @@
-Notes for the divide and conquer algorithm.
-
-- 
-

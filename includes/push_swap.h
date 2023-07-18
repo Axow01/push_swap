@@ -114,13 +114,13 @@ void				ft_print_list(t_pile *a);
 /* This give the variable data. */
 t_data				*get_data(void);
 
-/* This function add a value to the list given, it's not like the other one because
-this one has nothing to do with stack a or b. */
+/* This function add a value to the list given, it's not like the
+ other one because this one has nothing to do with stack a or b. */
 void				ft_add_value(t_pile *pile, int value);
 
 void				ft_print_formated(void);
 
-bool				ft_check_sort();
+bool				ft_check_sort(void);
 
 int					ft_get_largest(t_pile *pile);
 
@@ -139,5 +139,11 @@ int					ft_get_future_pos(t_pile *node);
 void				ft_transfer(void);
 
 void				finish(void);
+
+int					ft_get_smallgap(t_pile *node);
+
+t_pile				*get_smallest_node(t_pile *pile, int nb);
+
+int					ft_min_biggest(int nb, int nb2);
 
 #endif
