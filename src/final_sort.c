@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:18:14 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/18 13:44:38 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/19 13:18:37 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,13 @@ void	finish(void)
 	}
 	smallest = get_smallest_node(get_data()->a, ft_get_smallest(get_data()->a));
 	if (smallest->index > ft_list_lenght(get_data()->a))
+	{
 		while (get_data()->a->nb != smallest->nb)
 			ft_rra(get_data());
+	}
 	else
+	{
 		while (get_data()->a->nb != smallest->nb)
 			ft_ra(get_data(), 1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 10:59:28 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/18 14:13:14 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/19 13:29:31 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,11 @@ t_pile	*getlargest_node(t_pile *node, t_pile *future, bool reverse)
 	return (future);
 }
 
-void	smaller_stack(int i, t_pile *node_moving, t_pile *future_node)
+void	smaller_stack(t_pile *node_moving, t_pile *future_node)
 {
+	int	i;
+
+	i = 0;
 	if (ft_list_lenght(get_data()->b) < 3
 		&& (node_moving->rotate || node_moving->rrotate))
 	{
@@ -84,21 +87,20 @@ void	ft_double_rotate(t_pile *node_moving, t_pile *future_node)
 		i = ft_smallest_value(node_moving->rotate, future_node->rotate);
 		while (i-- > 0)
 			ft_rr(get_data());
-		i = getlargest_node(node_moving, future_node, false)->rotate;
-		i -= ft_smallest_value(node_moving->rotate, future_node->rotate);
-		getlargest_node(node_moving, future_node, false)->rotate = i;
+		i = ft_smallest_value(node_moving->rotate, future_node->rotate);
+		getlargest_node(node_moving, future_node, false)->rotate -= i;
 	}
 	else if (node_moving->rrotate && future_node->rrotate)
 	{
 		i = ft_smallest_value(node_moving->rrotate, future_node->rrotate);
 		while (i-- > 0)
 			ft_rrr(get_data());
-		i = getlargest_node(node_moving, future_node, true)->rotate;
-		i -= ft_smallest_value(node_moving->rrotate, future_node->rrotate);
-		getlargest_node(node_moving, future_node, true)->rotate = i;
+		i = ft_smallest_value(node_moving->rrotate, future_node->rrotate);
+		getlargest_node(node_moving, future_node, true)->rrotate -= i;
 	}
-	else
-		smaller_stack(i, node_moving, future_node);
+	else if (ft_list_lenght(get_data()->b) < 3
+		&& (node_moving->rotate || node_moving->rrotate))
+		smaller_stack(node_moving, future_node);
 }
 
 void	ft_transfer(void)
