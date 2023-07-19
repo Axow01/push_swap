@@ -20,8 +20,7 @@ void	ft_rrb(t_data *data)
 	while (current->next)
 		current = current->next;
 	current->next = data->b;
-	if (current->previous)
-		current->previous->next = NULL;
+	current->previous->next = NULL;
 	current->previous = NULL;
 	data->b->previous = current;
 	data->b = current;

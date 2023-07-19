@@ -22,6 +22,9 @@ void	ft_pb(t_data *data)
 	data->a->next = data->b;
 	data->b = data->a;
 	data->a = buffer;
+	data->b->previous = NULL;
+	if (data->b->next)
+		data->b->next->previous = data->b;
 	ft_printf("pb\n");
 }
 
