@@ -12,12 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void	ft_exit(char *message, int code)
-{
-	ft_printf("Error\n%s\n", message);
-	exit(code);
-}
-
 int	ft_add_value_list(t_pile *stack, int value, int who)
 {
 	t_pile	*current;
@@ -70,6 +64,7 @@ bool	ft_check_sort(void)
 	{
 		if (current->nb < nb)
 			return (false);
+		nb = current->nb;
 		current = current->next;
 	}
 	return (true);
@@ -80,7 +75,9 @@ int	main(int argc, char **argv)
 	t_data	*data;
 
 	if (argc == 1)
-		ft_exit("./push_swap <number> <number> <number>> ...", 1);
+		mms_kill("oui a la vie", true, 1);
+	if (argv[1][0] == 0)
+		return (1);
 	mms_set_alloc_fn(ft_calloc);
 	data = get_data();
 	data->a = NULL;

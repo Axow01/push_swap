@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 19:18:14 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/19 13:18:37 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/24 17:06:59 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ t_pile	*get_smallest_node(t_pile *pile, int nb)
 	return (NULL);
 }
 
-int	ft_min_biggest(int nb, int nb2)
+long int	ft_min_biggest(int nb, int nb2)
 {
 	if (nb > nb2)
-		return (nb - nb2);
-	return (nb2 - nb);
+		return ((long int)nb - (long int)nb2);
+	return ((long int)nb2 - (long int)nb);
 }
 
 int	ft_find_position_a(t_pile *node)

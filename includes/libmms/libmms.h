@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 01:48:36 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/18 13:59:40 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/24 13:06:27 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include "../libft/libft.h"
 
 typedef struct s_pointer
 {

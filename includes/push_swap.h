@@ -144,6 +144,8 @@ int					ft_get_smallgap(t_pile *node);
 
 t_pile				*get_smallest_node(t_pile *pile, int nb);
 
-int					ft_min_biggest(int nb, int nb2);
+long int			ft_min_biggest(int nb, int nb2);
+
+long int			ft_atoli(const char *str);
 
 #endif

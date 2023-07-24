@@ -56,9 +56,9 @@ void	ft_rrr(t_data *data)
 
 int	ft_get_smallgap(t_pile *node)
 {
-	t_pile	*current;
-	int		smallest_gap;
-	int		smallest_index;
+	t_pile			*current;
+	long int		smallest_gap;
+	int				smallest_index;
 
 	smallest_gap = ft_min_biggest(node->nb, ft_get_smallest(get_data()->a));
 	smallest_index = get_smallest_node(get_data()->a,

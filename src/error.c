@@ -31,7 +31,7 @@ void	ft_check_twins(t_data *data)
 		while (compare)
 		{
 			if (compare->nb == current->nb)
-				ft_exit_pointer("There is two identical numbers ?!\n", NULL,
+				ft_exit_pointer("Error\n", NULL,
 					data);
 			compare = compare->next;
 		}

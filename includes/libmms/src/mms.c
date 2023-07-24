@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 01:51:32 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/18 14:01:53 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/24 13:06:06 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ t_pointer	*get_data_mms(void)
 
 	if (!data)
 	{
-		data = calloc(1, sizeof(t_pointer));
+		data = ft_calloc(1, sizeof(t_pointer));
 		if (!data)
 			mms_kill("Failled to allocate ! \n", true, EXIT_FAILURE);
-		data->f = calloc;
+		data->f = ft_calloc;
 	}
 	return (data);
 }
@@ -43,9 +43,10 @@ void	mms_kill(char *message, bool quit, int code)
 		current = buffer;
 	}
 	if (message)
-		printf("%s", message);
+		ft_putstr_fd("Error\n", 2);
 	if (quit)
 		exit(code);
+	(void)message;
 }
 
 void	*mms_alloc(size_t size, size_t typesize)
@@ -95,21 +96,4 @@ void	*mms_free(void *ptr)
 		current = current->next;
 	}
 	return (NULL);
-}
-
-void	print_list(void)
-{
-	t_pointer	*current;
-
-	current = get_data_mms();
-	if (!current)
-		return ;
-	while (current)
-	{
-		if (current->ptr)
-			printf("%p\n", current->ptr);
-		else
-			write(1, "NULL\n", 5);
-		current = current->next;
-	}
 }

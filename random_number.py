@@ -9,7 +9,7 @@ def main():
     if len(sys.argv) != 4:
         print("Usage: python random_numbers.py <count> <start> <end>")
         return
-    
+
     try:
         count = int(sys.argv[1])
         start = int(sys.argv[2])
@@ -17,7 +17,7 @@ def main():
     except ValueError:
         print("Error: Count, start, and end must be integers.")
         return
-    
+
     random_numbers = generate_random_numbers(count, start, end)
     print(' '.join(map(str, random_numbers)))
 
