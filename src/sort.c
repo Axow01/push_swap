@@ -96,10 +96,12 @@ void	ft_sort(void)
 	{
 		push_smallest();
 		push_smallest();
-		return ;
 	}
-	ft_pb(get_data());
-	ft_pb(get_data());
+	else
+	{
+		ft_pb(get_data());
+		ft_pb(get_data());
+	}
 	while (ft_list_lenght(get_data()->a) > 3)
 		ft_transfer();
 	ft_sort_small();
