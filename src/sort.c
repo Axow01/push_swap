@@ -92,11 +92,14 @@ void	ft_sort(void)
 		ft_sort_small();
 		return ;
 	}
-	push_smallest();
-	push_smallest();
-	ft_indexing(get_data()->a);
-	ft_indexing(get_data()->b);
-	ft_all_cost(get_data()->a);
+	if (ft_list_lenght(get_data()->a) == 5)
+	{
+		push_smallest();
+		push_smallest();
+		return ;
+	}
+	ft_pb(get_data());
+	ft_pb(get_data());
 	while (ft_list_lenght(get_data()->a) > 3)
 		ft_transfer();
 	ft_sort_small();

@@ -6,7 +6,7 @@
 /*   By: mmarcott <mmarcott@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 10:59:28 by mmarcott          #+#    #+#             */
-/*   Updated: 2023/07/19 13:29:31 by mmarcott         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:53:01 by mmarcott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,9 @@ void	ft_transfer(void)
 	t_pile	*future_node;
 	int		i;
 
+	ft_indexing(get_data()->a);
+	ft_indexing(get_data()->b);
+	ft_all_cost(get_data()->a);
 	node_moving = ft_smallest_cost_node(get_data()->a);
 	future_node = get_node(get_data()->b, ft_get_future_pos(node_moving));
 	i = 0;
@@ -125,7 +128,4 @@ void	ft_transfer(void)
 	while (i++ < future_node->rrotate)
 		ft_rrb(get_data());
 	ft_pb(get_data());
-	ft_indexing(get_data()->a);
-	ft_indexing(get_data()->b);
-	ft_all_cost(get_data()->a);
 }
